@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :operacions
   resources :coches
   resources :personas
   devise_for :users
