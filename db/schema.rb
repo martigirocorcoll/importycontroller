@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_231908) do
+ActiveRecord::Schema.define(version: 2022_01_31_233037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 2022_01_31_231908) do
     t.string "chasis"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "compras", force: :cascade do |t|
+    t.integer "precio"
+    t.decimal "iva"
+    t.date "fecha"
+    t.string "tipo"
+    t.string "categoria"
+    t.bigint "persona_id", null: false
+    t.bigint "car_id", null: false
+    t.bigint "operacion_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_compras_on_car_id"
+    t.index ["operacion_id"], name: "index_compras_on_operacion_id"
+    t.index ["persona_id"], name: "index_compras_on_persona_id"
   end
 
   create_table "operacions", force: :cascade do |t|
@@ -58,4 +74,28 @@ ActiveRecord::Schema.define(version: 2022_01_31_231908) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "venta", force: :cascade do |t|
+    t.integer "precio"
+    t.decimal "iva"
+    t.date "fecha"
+    t.bigint "persona_id", null: false
+    t.bigint "car_id", null: false
+    t.bigint "operacion_id", null: false
+    t.string "numero"
+    t.boolean "coche_cambio"
+    t.integer "coche_cambio_precio"
+    t.decimal "coche_cambio_iva"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_venta_on_car_id"
+    t.index ["operacion_id"], name: "index_venta_on_operacion_id"
+    t.index ["persona_id"], name: "index_venta_on_persona_id"
+  end
+
+  add_foreign_key "compras", "cars"
+  add_foreign_key "compras", "operacions"
+  add_foreign_key "compras", "personas"
+  add_foreign_key "venta", "cars"
+  add_foreign_key "venta", "operacions"
+  add_foreign_key "venta", "personas"
 end

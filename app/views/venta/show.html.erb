@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @ventum.precio %>
+</p>
+
+<p>
+  <strong>Iva:</strong>
+  <%= @ventum.iva %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @ventum.fecha %>
+</p>
+
+<p>
+  <strong>Persona:</strong>
+  <%= @ventum.persona_id %>
+</p>
+
+<p>
+  <strong>Car:</strong>
+  <%= @ventum.car_id %>
+</p>
+
+<p>
+  <strong>Operacion:</strong>
+  <%= @ventum.operacion_id %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @ventum.numero %>
+</p>
+
+<p>
+  <strong>Coche cambio:</strong>
+  <%= @ventum.coche_cambio %>
+</p>
+
+<p>
+  <strong>Coche cambio precio:</strong>
+  <%= @ventum.coche_cambio_precio %>
+</p>
+
+<p>
+  <strong>Coche cambio iva:</strong>
+  <%= @ventum.coche_cambio_iva %>
+</p>
+
+<%= link_to 'Edit', edit_ventum_path(@ventum) %> |
+<%= link_to 'Back', venta_path %>

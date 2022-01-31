@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Compras</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Precio</th>
+      <th>Iva</th>
+      <th>Fecha</th>
+      <th>Tipo</th>
+      <th>Categoria</th>
+      <th>Persona</th>
+      <th>Car</th>
+      <th>Operacio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @compras.each do |compra| %>
+      <tr>
+        <td><%= compra.precio %></td>
+        <td><%= compra.iva %></td>
+        <td><%= compra.fecha %></td>
+        <td><%= compra.tipo %></td>
+        <td><%= compra.categoria %></td>
+        <td><%= compra.persona_id %></td>
+        <td><%= compra.car_id %></td>
+        <td><%= compra.operacio_id %></td>
+        <td><%= link_to 'Show', compra %></td>
+        <td><%= link_to 'Edit', edit_compra_path(compra) %></td>
+        <td><%= link_to 'Destroy', compra, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Compra', new_compra_path %>

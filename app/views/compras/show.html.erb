@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @compra.precio %>
+</p>
+
+<p>
+  <strong>Iva:</strong>
+  <%= @compra.iva %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @compra.fecha %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @compra.tipo %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @compra.categoria %>
+</p>
+
+<p>
+  <strong>Persona:</strong>
+  <%= @compra.persona_id %>
+</p>
+
+<p>
+  <strong>Car:</strong>
+  <%= @compra.car_id %>
+</p>
+
+<p>
+  <strong>Operacio:</strong>
+  <%= @compra.operacio_id %>
+</p>
+
+<%= link_to 'Edit', edit_compra_path(@compra) %> |
+<%= link_to 'Back', compras_path %>
