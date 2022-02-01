@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @pago.cantidad %>
+</p>
+
+<p>
+  <strong>Fecha teorica:</strong>
+  <%= @pago.fecha_teorica %>
+</p>
+
+<p>
+  <strong>Fecha efectiva:</strong>
+  <%= @pago.fecha_efectiva %>
+</p>
+
+<p>
+  <strong>Compra:</strong>
+  <%= @pago.compra_id %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @pago.tipo %>
+</p>
+
+<%= link_to 'Edit', edit_pago_path(@pago) %> |
+<%= link_to 'Back', pagos_path %>

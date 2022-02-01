@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_234743) do
+ActiveRecord::Schema.define(version: 2022_02_01_000231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 2022_01_31_234743) do
     t.string "chasis"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cobros", force: :cascade do |t|
+    t.decimal "cantidad"
+    t.date "fecha_teorica"
+    t.date "fecha_efectiva"
+    t.bigint "compra_id", null: false
+    t.string "tipo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["compra_id"], name: "index_cobros_on_compra_id"
   end
 
   create_table "compras", force: :cascade do |t|
@@ -46,6 +57,17 @@ ActiveRecord::Schema.define(version: 2022_01_31_234743) do
     t.string "comercial"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pagos", force: :cascade do |t|
+    t.decimal "cantidad"
+    t.date "fecha_teorica"
+    t.date "fecha_efectiva"
+    t.bigint "compra_id", null: false
+    t.string "tipo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["compra_id"], name: "index_pagos_on_compra_id"
   end
 
   create_table "personas", force: :cascade do |t|
@@ -92,9 +114,11 @@ ActiveRecord::Schema.define(version: 2022_01_31_234743) do
     t.index ["persona_id"], name: "index_venta_on_persona_id"
   end
 
+  add_foreign_key "cobros", "compras"
   add_foreign_key "compras", "cars"
   add_foreign_key "compras", "operacions"
   add_foreign_key "compras", "personas"
+  add_foreign_key "pagos", "compras"
   add_foreign_key "venta", "cars"
   add_foreign_key "venta", "operacions"
   add_foreign_key "venta", "personas"

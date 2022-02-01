@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cobros
+  resources :pagos
   resources :venta
   resources :compras
   resources :cars

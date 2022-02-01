@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @cobro.cantidad %>
+</p>
+
+<p>
+  <strong>Fecha teorica:</strong>
+  <%= @cobro.fecha_teorica %>
+</p>
+
+<p>
+  <strong>Fecha efectiva:</strong>
+  <%= @cobro.fecha_efectiva %>
+</p>
+
+<p>
+  <strong>Compra:</strong>
+  <%= @cobro.compra_id %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @cobro.tipo %>
+</p>
+
+<%= link_to 'Edit', edit_cobro_path(@cobro) %> |
+<%= link_to 'Back', cobros_path %>
