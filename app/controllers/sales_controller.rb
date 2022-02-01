@@ -65,6 +65,6 @@ class SalesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sale_params
-      params.require(:sale).permit(:precio, :iva, :fecha, :persona_id, :car_id, :operacion_id, :numero, :coche_cambio, :coche_cambio_precio, :coche_cambio_iva)
+      params.require(:sale).permit(:precio, :iva, :fecha, :persona_id, :car_id, :operacion_id, :numero, :coche_cambio, :coche_cambio_precio, :coche_cambio_modelo, :coche_cambio_km, :coche_cambio_matricula, :coche_cambio_ano )
     end
 end
