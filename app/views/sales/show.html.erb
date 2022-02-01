@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @sale.precio %>
+</p>
+
+<p>
+  <strong>Iva:</strong>
+  <%= @sale.iva %>
+</p>
+
+<p>
+  <strong>Fecha:</strong>
+  <%= @sale.fecha %>
+</p>
+
+<p>
+  <strong>Persona:</strong>
+  <%= @sale.persona_id %>
+</p>
+
+<p>
+  <strong>Car:</strong>
+  <%= @sale.car_id %>
+</p>
+
+<p>
+  <strong>Operacion:</strong>
+  <%= @sale.operacion_id %>
+</p>
+
+<p>
+  <strong>Numero:</strong>
+  <%= @sale.numero %>
+</p>
+
+<p>
+  <strong>Coche cambio:</strong>
+  <%= @sale.coche_cambio %>
+</p>
+
+<p>
+  <strong>Coche cambio precio:</strong>
+  <%= @sale.coche_cambio_precio %>
+</p>
+
+<p>
+  <strong>Coche cambio iva:</strong>
+  <%= @sale.coche_cambio_iva %>
+</p>
+
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %>

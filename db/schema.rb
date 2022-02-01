@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_01_000231) do
+ActiveRecord::Schema.define(version: 2022_02_01_162616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 2022_02_01_000231) do
     t.decimal "cantidad"
     t.date "fecha_teorica"
     t.date "fecha_efectiva"
-    t.bigint "compra_id", null: false
+    t.bigint "sale_id", null: false
     t.string "tipo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["compra_id"], name: "index_cobros_on_compra_id"
+    t.index ["sale_id"], name: "index_cobros_on_sale_id"
   end
 
   create_table "compras", force: :cascade do |t|
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2022_02_01_000231) do
     t.string "comercial"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "titol"
+    t.string "venedor"
   end
 
   create_table "pagos", force: :cascade do |t|
@@ -84,6 +86,27 @@ ActiveRecord::Schema.define(version: 2022_02_01_000231) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sales", force: :cascade do |t|
+    t.integer "precio"
+    t.decimal "iva"
+    t.date "fecha"
+    t.bigint "persona_id", null: false
+    t.bigint "car_id", null: false
+    t.bigint "operacion_id", null: false
+    t.string "numero"
+    t.boolean "coche_cambio"
+    t.integer "coche_cambio_precio"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "coche_cambio_modelo"
+    t.string "coche_cambio_km"
+    t.string "coche_cambio_matricula"
+    t.string "coche_cambio_ano"
+    t.index ["car_id"], name: "index_sales_on_car_id"
+    t.index ["operacion_id"], name: "index_sales_on_operacion_id"
+    t.index ["persona_id"], name: "index_sales_on_persona_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -96,30 +119,12 @@ ActiveRecord::Schema.define(version: 2022_02_01_000231) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "venta", force: :cascade do |t|
-    t.integer "precio"
-    t.decimal "iva"
-    t.date "fecha"
-    t.bigint "persona_id", null: false
-    t.bigint "car_id", null: false
-    t.bigint "operacion_id", null: false
-    t.string "numero"
-    t.boolean "coche_cambio"
-    t.integer "coche_cambio_precio"
-    t.decimal "coche_cambio_iva"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["car_id"], name: "index_venta_on_car_id"
-    t.index ["operacion_id"], name: "index_venta_on_operacion_id"
-    t.index ["persona_id"], name: "index_venta_on_persona_id"
-  end
-
-  add_foreign_key "cobros", "compras"
+  add_foreign_key "cobros", "sales"
   add_foreign_key "compras", "cars"
   add_foreign_key "compras", "operacions"
   add_foreign_key "compras", "personas"
   add_foreign_key "pagos", "compras"
-  add_foreign_key "venta", "cars"
-  add_foreign_key "venta", "operacions"
-  add_foreign_key "venta", "personas"
+  add_foreign_key "sales", "cars"
+  add_foreign_key "sales", "operacions"
+  add_foreign_key "sales", "personas"
 end

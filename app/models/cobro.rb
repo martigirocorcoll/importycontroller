@@ -1,3 +1,3 @@
 class Cobro < ApplicationRecord
-  belongs_to :compra
+  belongs_to :sale
 end

@@ -17,7 +17,7 @@ class CobrosControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cobro" do
     assert_difference('Cobro.count') do
-      post cobros_url, params: { cobro: { cantidad: @cobro.cantidad, compra_id: @cobro.compra_id, fecha_efectiva: @cobro.fecha_efectiva, fecha_teorica: @cobro.fecha_teorica, tipo: @cobro.tipo } }
+      post cobros_url, params: { cobro: { cantidad: @cobro.cantidad, fecha_efectiva: @cobro.fecha_efectiva, fecha_teorica: @cobro.fecha_teorica, sale_id: @cobro.sale_id, tipo: @cobro.tipo } }
     end
 
     assert_redirected_to cobro_url(Cobro.last)
@@ -34,7 +34,7 @@ class CobrosControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update cobro" do
-    patch cobro_url(@cobro), params: { cobro: { cantidad: @cobro.cantidad, compra_id: @cobro.compra_id, fecha_efectiva: @cobro.fecha_efectiva, fecha_teorica: @cobro.fecha_teorica, tipo: @cobro.tipo } }
+    patch cobro_url(@cobro), params: { cobro: { cantidad: @cobro.cantidad, fecha_efectiva: @cobro.fecha_efectiva, fecha_teorica: @cobro.fecha_teorica, sale_id: @cobro.sale_id, tipo: @cobro.tipo } }
     assert_redirected_to cobro_url(@cobro)
   end
 

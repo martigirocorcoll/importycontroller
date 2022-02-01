@@ -1,6 +1,6 @@
-class CreateVenta < ActiveRecord::Migration[6.0]
+class CreateSales < ActiveRecord::Migration[6.0]
   def change
-    create_table :venta do |t|
+    create_table :sales do |t|
       t.integer :precio
       t.decimal :iva
       t.date :fecha

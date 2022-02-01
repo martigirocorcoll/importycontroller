@@ -15,9 +15,9 @@ class CobrosTest < ApplicationSystemTestCase
     click_on "New Cobro"
 
     fill_in "Cantidad", with: @cobro.cantidad
-    fill_in "Compra", with: @cobro.compra_id
     fill_in "Fecha efectiva", with: @cobro.fecha_efectiva
     fill_in "Fecha teorica", with: @cobro.fecha_teorica
+    fill_in "Sale", with: @cobro.sale_id
     fill_in "Tipo", with: @cobro.tipo
     click_on "Create Cobro"
 
@@ -30,9 +30,9 @@ class CobrosTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Cantidad", with: @cobro.cantidad
-    fill_in "Compra", with: @cobro.compra_id
     fill_in "Fecha efectiva", with: @cobro.fecha_efectiva
     fill_in "Fecha teorica", with: @cobro.fecha_teorica
+    fill_in "Sale", with: @cobro.sale_id
     fill_in "Tipo", with: @cobro.tipo
     click_on "Update Cobro"
 
