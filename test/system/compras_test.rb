@@ -18,7 +18,7 @@ class ComprasTest < ApplicationSystemTestCase
     fill_in "Categoria", with: @compra.categoria
     fill_in "Fecha", with: @compra.fecha
     fill_in "Iva", with: @compra.iva
-    fill_in "Operacio", with: @compra.operacio_id
+    fill_in "Operacion", with: @compra.operacion_id
     fill_in "Persona", with: @compra.persona_id
     fill_in "Precio", with: @compra.precio
     fill_in "Tipo", with: @compra.tipo
@@ -36,7 +36,7 @@ class ComprasTest < ApplicationSystemTestCase
     fill_in "Categoria", with: @compra.categoria
     fill_in "Fecha", with: @compra.fecha
     fill_in "Iva", with: @compra.iva
-    fill_in "Operacio", with: @compra.operacio_id
+    fill_in "Operacion", with: @compra.operacion_id
     fill_in "Persona", with: @compra.persona_id
     fill_in "Precio", with: @compra.precio
     fill_in "Tipo", with: @compra.tipo

@@ -65,6 +65,6 @@ class ComprasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def compra_params
-      params.require(:compra).permit(:precio, :iva, :fecha, :tipo, :categoria, :persona_id, :car_id, :operacio_id)
+      params.require(:compra).permit(:precio, :iva, :fecha, :tipo, :categoria, :persona_id, :car_id, :operacion_id)
     end
 end
