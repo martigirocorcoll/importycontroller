@@ -1,4 +1,4 @@
 class Car < ApplicationRecord
-  has_many :compras
-  has_many :sales
+  has_many :compras, dependent: :destroy
+  has_many :sales, dependent: :destroy
 end

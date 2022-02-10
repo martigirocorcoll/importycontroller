@@ -2,18 +2,16 @@
 
 <h1>Sales</h1>
 
-<table>
+<table class = "table">
   <thead>
     <tr>
+      <th>Factura</th>
+      <th>Fecha</th>
       <th>Precio</th>
       <th>Iva</th>
-      <th>Fecha</th>
-      <th>Persona</th>
-      <th>Car</th>
-      <th>Operacion</th>
-      <th>Numero</th>
+      <th>Comprador</th>
+      <th>Coche</th>
       <th>Coche cambio</th>
-      <th>Coche cambio precio</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,15 +19,13 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.precio %></td>
-        <td><%= sale.iva %></td>
-        <td><%= sale.fecha %></td>
-        <td><%= sale.persona_id %></td>
-        <td><%= sale.car_id %></td>
-        <td><%= sale.operacion_id %></td>
         <td><%= sale.numero %></td>
+        <td><%= sale.fecha.strftime('%d-%m-%Y') %></td>
+        <td><%= sale.precio %>€</td>
+        <td><%= sale.iva.to_f * 100 %>%</td>
+        <td><%= sale.persona.nombre + " " + sale.persona.apellido %></td>
+        <td><%= sale.car.marca + " " + sale.car.modelo %></td>
         <td><%= sale.coche_cambio %></td>
-        <td><%= sale.coche_cambio_precio %></td>
         <td><%= link_to 'Show', sale %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
         <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,6 +1,6 @@
 class Operacion < ApplicationRecord
-  has_many :compras
-  has_many :sales
+  has_many :compras, dependent: :destroy
+  has_many :sales, dependent: :destroy
   has_many :pagos, through: :compras
   has_many :cobros, through: :sales
   has_many :cars, through: :sales

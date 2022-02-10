@@ -3,7 +3,7 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
+  <div class="form-inputs form-group">
     <%= f.input :marca %>
     <%= f.input :modelo %>
     <%= f.input :kilometraje %>
@@ -11,7 +11,7 @@
     <%= f.input :chasis %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions text-center mb-3">
+    <%= f.button :submit, class: "btn btn-primary" %>
   </div>
 <% end %>

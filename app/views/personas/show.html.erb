@@ -1,14 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @persona.nombre %>
-</p>
+<div class = "d-flex justify-content-between align-items-center">
+<h1>
+  <%= @persona.nombre %> <%= @persona.apellido %>
+</h1>
 
-<p>
-  <strong>Apellido:</strong>
-  <%= @persona.apellido %>
-</p>
+<%= link_to 'Edit', edit_persona_path(@persona), :class => "btn btn-outline-primary btn-lg" %>
+</div>
 
 <p>
   <strong>Mail:</strong>
@@ -45,5 +43,65 @@
   <%= @persona.cif %>
 </p>
 
-<%= link_to 'Edit', edit_persona_path(@persona) %> |
-<%= link_to 'Back', personas_path %>
+<% if @persona.sales != [] %>
+  <h2> Le hemos vendido estos coches:</h2>
+  <table class = "table">
+    <thead>
+      <tr>
+        <th>Coche</th>
+        <th>Precio</th>
+        <th>Comercial</th>
+        <th>Estado importación</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%  @persona.sales.each do |sale| %>
+        <tr>
+          <td><%= sale.car.marca + " " + sale.car.modelo%></td>
+          <td><%= sale.precio  %> €</td>
+          <td><%= sale.operacion.comercial %></td>
+          <td><%= sale.operacion.estado%></td>
+          <td><%= link_to "Show car", car_path(sale.car)%></td>
+          <td><%= link_to "Show sale", sale_path(sale)%></td>
+          <td><%= link_to "Show operacion", operacion_path(sale.operacion)%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+ <h2> No le hemos vendido coches.</h2>
+<% end %>
+
+<% if @persona.compras != [] %>
+  <h2> Le hemos comprado estos artículos:</h2>
+
+    <table class = "table">
+    <thead>
+      <tr>
+        <th>Coche</th>
+        <th>Precio</th>
+        <th>Comercial</th>
+        <th>Estado importación</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @persona.compras.each do |compra| %>
+        <tr>
+          <td><%= compra.car.marca + " " + compra.car.modelo%></td>
+          <td><%= compra.precio  %> €</td>
+          <td><%= compra.operacion.comercial %></td>
+          <td><%= compra.operacion.estado%></td>
+          <td><%= link_to "Show car", car_path(compra.car)%></td>
+          <td><%= link_to "Show compra", compra_path(compra)%></td>
+          <td><%= link_to "Show operacion", operacion_path(compra.operacion)%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+ <h2> No le hemos comprado nada.</h2>
+<% end %>

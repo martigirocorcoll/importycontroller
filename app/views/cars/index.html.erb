@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cars</h1>
+<div class = "d-flex justify-content-around align-items-center">
+<h1>Todos los coches</h1>
+<%= link_to 'New Car', new_car_path, :class => "btn btn-outline-warning" %>
+</div>
 
-<table>
+<table class = "table">
   <thead>
     <tr>
+      <th>Creación</th>
       <th>Marca</th>
       <th>Modelo</th>
       <th>Kilometraje</th>
@@ -17,6 +21,7 @@
   <tbody>
     <% @cars.each do |car| %>
       <tr>
+        <td><%= car.created_at.strftime('%d-%m-%Y') %></td>
         <td><%= car.marca %></td>
         <td><%= car.modelo %></td>
         <td><%= car.kilometraje %></td>
