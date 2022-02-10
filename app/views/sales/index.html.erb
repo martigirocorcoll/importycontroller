@@ -1,17 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<div class = "d-flex justify-content-around align-items-center">
 <h1>Sales</h1>
+<%= link_to 'New Sale', new_sale_path, :class => "btn btn-outline-warning" %>
+</div>
 
 <table class = "table">
   <thead>
     <tr>
       <th>Factura</th>
       <th>Fecha</th>
+      <th>Coche</th>
+      <th>Comprador</th>
       <th>Precio</th>
       <th>Iva</th>
-      <th>Comprador</th>
-      <th>Coche</th>
       <th>Coche cambio</th>
+      <th>Pendiente</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,21 +23,28 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.numero %></td>
+        <td><%= link_to "#{sale.numero}", sale %></td>
         <td><%= sale.fecha.strftime('%d-%m-%Y') %></td>
+        <td><%= link_to "#{sale.car.marca + " " + sale.car.modelo}", sale.car, :style=> "color: black;" %></td>
+        <td><%= link_to "#{sale.persona.nombre + " " + sale.persona.apellido}", sale.persona, :style=> "color: black;" %></td>
         <td><%= sale.precio %>€</td>
         <td><%= sale.iva.to_f * 100 %>%</td>
-        <td><%= sale.persona.nombre + " " + sale.persona.apellido %></td>
-        <td><%= sale.car.marca + " " + sale.car.modelo %></td>
-        <td><%= sale.coche_cambio %></td>
-        <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><% if sale.coche_cambio %></td>
+          <%= "Si" %>
+        <%else %>
+        <%= "-"  %>
+        <% end %>
+        <% if sale.pendiente > 0%>
+          <td class = "rouge"><%= sale.pendiente %> €</td>
+        <% elsif sale.pendiente < 0 %>
+          <td class = "orangina"><%= sale.pendiente %> €</td>
+        <% else %>
+          <td class = "verd"><%= sale.pendiente %> €</td>
+        <% end %>
+        <td><%= link_to "Delete", sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Sale', new_sale_path %>
