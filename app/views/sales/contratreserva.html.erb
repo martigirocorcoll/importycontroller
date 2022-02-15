@@ -1,0 +1,141 @@
+<table style="width:100%">
+  <tr>
+    <td>
+      <%= image_tag image_url("logo.png") %>
+    </td>
+    <td>
+      <p style="text-align:right;">Importy Garage S.L. - B67615385</p>
+      <p style="text-align:right;">Pg. Joan de Borbó 103 L11</p>
+      <p style="text-align:right;">Barcelona 08039</p>
+    </td>
+  </tr>
+</table>
+
+<div style="border-bottom: 5px solid black;">
+  <table style="width:100%">
+    <td>
+      <h1>Datos del vehículo:</h1>
+    </td>
+    <td>
+     <h1 style="text-align:right;">Fecha: <small><%= @sale.fecha.strftime("%d-%m-%Y") %></small></h1>
+    </td>
+  </table>
+  <table style="width:100%">
+    <td>
+      <p>
+        <strong>Modelo:</strong>
+        <%= @sale.car.marca + " " + @sale.car.modelo %>
+      </p>
+      <p>
+        <strong>Kilometraje:</strong>
+        <%= @sale.car.kilometraje %> km
+      </p>
+    </td>
+    <td>
+      <p>
+        <strong>1ª matriculacion:</strong>
+        <%= @sale.car.primeramat %>
+      </p>
+      <p>
+        <strong>Nº de chasis:</strong>
+        <%= @sale.car.chasis %>
+      </p>
+    </td>
+  </table>
+</div>
+<div style="border-bottom: 5px solid black;">
+<h1>Datos de la reserva:</h1>
+  <%unless @sale.iva == 0 %>
+    <p>
+      <strong>Precio de venta:</strong>
+      <%= number_to_currency(@sale.precio)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </p>
+  <%else %>
+      <p>
+      <strong>Precio de venta:</strong>
+      <%= number_to_currency(@sale.precio.to_i / 1.21)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€ + IVA = <%= number_to_currency(@sale.precio)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </p>
+  <%end %>
+  <ul>
+  <li>
+    <strong>Importe 1a reserva:</strong>
+    3.000 €
+  </li>
+  <li>
+    <strong>Importe 2a reserva:</strong>
+    <%= number_to_currency(@sale.precio.to_i * 0.4 - 3000)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %> €
+  </li>
+  <li>
+    <strong>Importe pago final:</strong>
+    <%= number_to_currency(@sale.precio.to_i * 0.6)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %> €
+  </li>
+  </ul>
+  <p>
+    <strong>Cuenta de ingreso (IBAN):</strong>
+    ES57 2100 0801 1302 0108 6618     -
+    <strong>Código BIC:</strong>
+    CAIXESBBXXX
+  </p>
+</div>
+<div>
+<h1>Cláusulas:</h1>
+  <p>
+    Reserva del vehículo descrito a favor de: <%= @sale.persona.nombre + " " + @sale.persona.apellido %> con NIF <%= @sale.persona.cif %> y con domicilio en <%= @sale.persona.direccion + ", " + @sale.persona.ciudad + " (" + @sale.persona.cp+ ") ," + @sale.persona.pais %>. (de aquí en adelante, EL CLIENTE).
+  </p>
+  <p>
+    El presente contrato de reserva indica el precio final del vehículo entregado , incluyendo la matriculación española y el cambio de nombre.
+  </p>
+  <p>
+    Para iniciar la importación del coche, el cliente realizará los ingresos por transferencia bancaria a la cuenta indicada de la siguiente forma:
+  </p>
+  <ol>
+    <li>
+      Se hará un pago inicial del importe de la 1a reserva de 3.000€ para poder reservar el coche en Alemania.
+    </li>
+    <li>
+      Seguidamente, se hará el pago de la 2a reserva, de  <%= number_to_currency(@sale.precio.to_i * 0.4 - 3000)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€ para iniciar los trámites de la importación
+    </li>
+    <% unless @sale.coche_cambio == true %>
+      <li>
+        El pago restante del vehículo, <%= number_to_currency(@sale.precio.to_i * 0.6)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€, se hará a la entrega, una vez este ya esté matriculado a nombre del cliente. Dicha entrega se realizará en un plazo aproximado de 6 semanas.
+      </li>
+    <% else %>
+      <li>
+        El pago restante del vehículo, <%= number_to_currency(@sale.precio.to_i * 0.6)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€, se hará a la entrega, una vez este ya esté matriculado a nombre del cliente. Dicha entrega se realizará en un plazo aproximado de 6 semanas. El pago se hará de la siguiente forma:
+        <ul>
+          <li>
+            <%= number_to_currency(@sale.precio.to_i * 0.6 - @sale.coche_cambio_precio.to_i)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€ se pagaran por transferencia bancaria.
+          </li>
+          <li>
+            Los <%= number_to_currency(@sale.coche_cambio_precio)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€ restantes se pagaran mediante la entrega de un coche a cambio. Se trata de un <%= @sale.coche_cambio_modelo %> con primera matriculación el <%= @sale.coche_cambio_ano %>, un kilometraje de <%= @sale.coche_cambio_km %> km y con matrícula <%= @sale.coche_cambio_matricula %>.
+          </li>
+        </ul>
+      </li>
+    <% end %>
+
+  </ol>
+
+  <p>
+  En caso de que dicho vehículo no se entregue al cliente en las condiciones adecuadas y con el equipamiento y estado acordado en “Annexo 1: <%= @sale.car.marca + " " + @sale.car.modelo %>”, el cliente tiene derecho a recuperar todas las cantidades entregadas a cuenta y cancelar la venta. En el caso de no llevarse a cabo la venta, por causas imputables al cliente cumpliendo el coche las especificaciones indicadas ,el cliente perderá el importe de la reserva.
+  </p>
+</div>
+
+
+<table style="width:100%">
+  <tr>
+    <td>
+      <h2 style="text-align:center;"><%= @sale.persona.nombre + " " + @sale.persona.apellido %></h2>
+    </td>
+    <td>
+      <h2 style="text-align:center;">Importy Garage S.L.</h2>
+    </td>
+  </tr>
+    <tr>
+    <td>
+      <h2 style="text-align:center;"><%=   %></h2>
+    </td>
+    <td style = "text-align:center;">
+      <%= image_tag image_url("firma.png") %>
+    </td>
+  </tr>
+</table>

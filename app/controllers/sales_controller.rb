@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  before_action :set_sale, only: %i[ show edit update destroy contratreserva]
+  before_action :set_sale, only: %i[ show edit update destroy ]
 
   # GET /sales or /sales.json
   def index
@@ -11,10 +11,11 @@ class SalesController < ApplicationController
   end
 
   def contratreserva
+    @sale = Sale.find(params[:id])
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "contrato-reserva", template: "sales/reservas.html.erb", encoding: 'utf8'   # Excluding ".pdf" extension.
+        render pdf: "contrato-reserva", template: "sales/contratreserva.html.erb", encoding: 'utf8'   # Excluding ".pdf" extension.
       end
     end
   end

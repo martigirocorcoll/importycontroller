@@ -1,0 +1,121 @@
+<p id="notice"><%= notice %></p>
+
+<div class = "d-flex justify-content-around align-items-center">
+  <h1><%= @sale.car.marca + " " + @sale.car.modelo %></h1>
+  <div>
+    <%= link_to 'Edita la venta', edit_sale_path(@sale), :class => "btn btn-outline-warning" %>
+    <p>
+      <strong>Fecha:</strong>
+      <%= @sale.fecha.strftime("%d-%m-%Y") %>
+    </p>
+  </div>
+</div>
+
+<div class = "d-flex justify-content-between">
+  <div>
+    <h1>Venta</h1>
+    <p>
+    <strong>Factura:</strong>
+    <%= @sale.numero %>
+    </p>
+      <p>
+      <strong>Precio:</strong>
+      <%= @sale.precio %>
+    </p>
+    <p>
+      <strong>Iva:</strong>
+      <%= @sale.iva %>
+    </p>
+  </div>
+  <%if @sale.coche_cambio  %>
+  <div>
+    <h1>Coche a cambio</h1>
+    <p>
+    <strong>Modelo:</strong>
+    <%= @sale.coche_cambio_modelo %>
+    </p>
+    <p>
+    <strong>Precio:</strong>
+    <%= @sale.coche_cambio_precio %>
+    </p>
+    <p>
+    <strong>Kilometraje:</strong>
+    <%= @sale.coche_cambio_km %>
+    </p>
+    <p>
+    <strong>Matricula:</strong>
+    <%= @sale.coche_cambio_matricula %>
+    </p>
+    <p>
+    <strong>Año:</strong>
+    <%= @sale.coche_cambio_ano %>
+    </p>
+  </div>
+  <% end %>
+  <div>
+    <h1>Coche</h1>
+    <p>
+    <strong>Car:</strong>
+    <%= @sale.car.marca + " " + @sale.car.modelo %>
+    </p>
+    <p>
+    <strong>Kilometraje</strong>
+    <%= @sale.car.kilometraje %>
+    </p>
+    <p>
+    <strong>Primera matriculacion</strong>
+    <%= @sale.car.primeramat %>
+    </p>
+    <p>
+    <strong>Primera matriculacion</strong>
+    <%= @sale.car.chasis %>
+    </p>
+  </div>
+  <div>
+    <h1>Comprador</h1>
+    <p>
+    <strong>Persona:</strong>
+    <%= @sale.persona.nombre + " " + @sale.persona.apellido %>
+    </p>
+    <p>
+    <strong>NIF / CIF:</strong>
+    <%= @sale.persona.cif %>
+    </p>
+    <p>
+    <strong>E-m@il:</strong>
+    <%= @sale.persona.mail %>
+    </p>
+    <p>
+    <strong>Telefono:</strong>
+    <%= @sale.persona.telefono %>
+    </p>
+    <p>
+    <strong>Dirección:</strong>
+    <%= @sale.persona.direccion + " " + @sale.persona.ciudad %>
+    </p>
+    <p>
+    <%= @sale.persona.cp + " " + @sale.persona.pais %>
+    </p>
+  </div>
+  <div>
+    <h1>Operacion</h1>
+    <p>
+      <strong>Operacion:</strong>
+      <%= @sale.operacion.titol %>
+    </p>
+    <p>
+      <strong>Estado:</strong>
+      <%= @sale.operacion.estado %>
+    </p>
+    <p>
+      <strong>Comercial:</strong>
+      <%= @sale.operacion.comercial %>
+    </p>
+</div>
+</div>
+
+
+
+
+
+<%= link_to 'Reserva PDF', reserva_path(:format => :pdf), :class => "btn btn-success"%>

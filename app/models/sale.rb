@@ -7,7 +7,9 @@ class Sale < ApplicationRecord
   def cobrado
     suma = 0
     self.cobros.each do |pago|
-      suma += pago.cantidad.to_f
+      unless pago.fecha_efectiva == nil
+        suma += pago.cantidad.to_f
+      end
     end
     return suma
   end

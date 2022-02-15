@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class = "d-flex justify-content-around align-items-center">
-<h1>Sales</h1>
+<h1>Ventas</h1>
 <%= link_to 'New Sale', new_sale_path, :class => "btn btn-outline-warning" %>
 </div>
 
@@ -29,10 +29,10 @@
         <td><%= link_to "#{sale.persona.nombre + " " + sale.persona.apellido}", sale.persona, :style=> "color: black;" %></td>
         <td><%= sale.precio %>€</td>
         <td><%= sale.iva.to_f * 100 %>%</td>
-        <td><% if sale.coche_cambio %></td>
-          <%= "Si" %>
+        <% if sale.coche_cambio %>
+         <td>Si</td>
         <%else %>
-        <%= "-"  %>
+          <td>-</td>
         <% end %>
         <% if sale.pendiente > 0%>
           <td class = "rouge"><%= sale.pendiente %> €</td>

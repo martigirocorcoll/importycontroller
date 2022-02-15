@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :sales
+  get '/sales/reserva/:id', to: 'sales#contratreserva', as: 'reserva'
   resources :cobros
   resources :pagos
-  resources :venta
   resources :compras
   resources :cars
   resources :operacions
