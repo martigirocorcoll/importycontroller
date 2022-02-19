@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class = "d-flex justify-content-around align-items-center">
-<h1>Ventas</h1>
-<%= link_to 'New Sale', new_sale_path, :class => "btn btn-outline-warning" %>
+<h1>Todas las ventas</h1>
+<%= link_to '+ Nueva venta', new_sale_path, :class => "btn btn-outline-warning" %>
 </div>
 
-<table class = "table">
+<table class = "table table-hover">
   <thead>
     <tr>
       <th>Factura</th>
@@ -34,14 +34,14 @@
         <%else %>
           <td>-</td>
         <% end %>
-        <% if sale.pendiente > 0%>
-          <td class = "rouge"><%= sale.pendiente %> €</td>
+        <% if sale.pendiente_cobro > 0%>
+          <td class = "rouge"><%= sale.pendiente_cobro %> €</td>
         <% elsif sale.pendiente < 0 %>
-          <td class = "orangina"><%= sale.pendiente %> €</td>
+          <td class = "orangina"><%= sale.pendiente_cobro %> €</td>
         <% else %>
-          <td class = "verd"><%= sale.pendiente %> €</td>
+          <td class = "verd"><%= sale.pendiente_cobro %> €</td>
         <% end %>
-        <td><%= link_to "Delete", sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "X", sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

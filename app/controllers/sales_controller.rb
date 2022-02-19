@@ -19,6 +19,17 @@ class SalesController < ApplicationController
       end
     end
   end
+
+  def factura
+    @sale = Sale.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "factura - #{@sale.numero}", template: "sales/factura.html.erb", encoding: 'utf8'   # Excluding ".pdf" extension.
+      end
+    end
+  end
+
   # GET /sales/new
   def new
     @sale = Sale.new

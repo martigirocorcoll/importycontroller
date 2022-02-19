@@ -3,7 +3,7 @@
 <div class= "d-flex barra-container">
   <div class = "card-container">
     <div class = "text-center">
-    <h1><%= @sale.car.marca + " " + @sale.car.modelo + " - " + @sale.precio.to_s %>€</h1>
+    <h1><%="#{@sale.id}) " + @sale.car.marca + " " + @sale.car.modelo + " - " + @sale.precio.to_s %>€</h1>
   </div>
   <div class = "d-flex justify-content-center">
     <div class = "text-center m-3">
@@ -19,7 +19,7 @@
 
     <div class = "sale-card">
       <div class = "d-flex justify-content-between align-items-baseline">
-        <h3><strong>Factura</strong></h3>
+        <h3><strong>Factura nº</strong></h3>
         <h3><%= @sale.numero %></h3>
       </div>
       <% if @sale.iva == 0.0 %>
@@ -32,20 +32,6 @@
         <%= @sale.fecha.strftime("%d-%m-%Y") %>
       </p>
     </div>
-
-    <% if @sale.coche_cambio %>
-      <div class = "sale-card-canvi">
-        <div class = "d-flex justify-content-between align-items-baseline">
-          <h3><strong>Coche cambio</strong></h3>
-           <h3>-<%= @sale.coche_cambio_precio %>€</h3>
-        </div>
-          <p><strong>Modelo:</strong> <%= @sale.coche_cambio_modelo %> </p>
-          <p><strong>Precio:</strong> <%= @sale.coche_cambio_precio %>€ </p>
-          <p><strong>Kilometraje:</strong> <%= @sale.coche_cambio_km %></p>
-          <p><strong>Matricula:</strong> <%= @sale.coche_cambio_matricula %></p>
-          <p><strong>Año:</strong> <%= @sale.coche_cambio_ano %></p>
-      </div>
-    <% end %>
 
     <div class = "sale-card">
       <div class = "d-flex justify-content-between align-items-baseline">
@@ -86,16 +72,16 @@
   <div class = "lateral-container">
     <div class = "barra-lateral">
       <div class = "d-flex justify-content-between">
-      <% if @sale.pendiente == 0 %>
+      <% if @sale.pendiente_cobro == 0 %>
         <h3 class = "text-center green"> Pagado</h3>
       <% else %>
-        <h3 class = "text-center"> Pendiente: <%= @sale.pendiente%>€</h3>
+        <h3 class = "text-center"> Pendiente: <%= @sale.pendiente_cobro%>€</h3>
       <% end %>
         <%= link_to " + ", new_cobro_path, :class => "añadido" %>
       </div>
       <table class = "table mt-4">
         <tr>
-          <th>Pagado?</th>
+          <th>Pago</th>
           <th>Cantidad</th>
           <th>Fecha</th>
           <th>Tipo</th>
@@ -109,12 +95,25 @@
             <td><%= link_to 'No', edit_cobro_path(cobro), :class => "text_none" %></td>
           <% end %>
             <td><%= cobro.cantidad %>€</td>
-            <td><%= cobro.fecha_teorica %></td>
+            <td><%= cobro.fecha_teorica.strftime('%d-%m-%Y') %></td>
             <td><%= cobro.tipo %></td>
             <td><%= link_to 'x', cobro, method: :delete, data: { confirm: 'Are you sure?' }, :class => "text_none" %></td>
         </tr>
         <% end %>
       </table>
+      <% if @sale.coche_cambio %>
+      <div class = "sale-card-canvi">
+        <div class = "d-flex justify-content-between align-items-baseline">
+          <h3><strong>Coche cambio</strong></h3>
+           <h3>-<%= @sale.coche_cambio_precio %>€</h3>
+        </div>
+          <p><strong>Modelo:</strong> <%= @sale.coche_cambio_modelo %> </p>
+          <p><strong>Precio:</strong> <%= @sale.coche_cambio_precio %>€ </p>
+          <p><strong>Kilometraje:</strong> <%= @sale.coche_cambio_km %></p>
+          <p><strong>Matricula:</strong> <%= @sale.coche_cambio_matricula %></p>
+          <p><strong>Año:</strong> <%= @sale.coche_cambio_ano %></p>
+      </div>
+    <% end %>
 
   </div>
 </div>

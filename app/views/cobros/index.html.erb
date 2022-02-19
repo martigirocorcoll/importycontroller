@@ -1,35 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cobros</h1>
+<div class = "d-flex justify-content-around align-items-center">
+<h1>Todos los cobros</h1>
+<%= link_to '+ Nuevo cobro', new_cobro_path, :class => "btn btn-outline-warning" %>
+</div>
 
-<table>
+<table class = "table table-hover">
   <thead>
     <tr>
+      <th>Creación</th>
       <th>Cantidad</th>
       <th>Fecha teorica</th>
       <th>Fecha efectiva</th>
       <th>Sale</th>
       <th>Tipo</th>
-      <th colspan="3"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @cobros.each do |cobro| %>
       <tr>
-        <td><%= cobro.cantidad %></td>
-        <td><%= cobro.fecha_teorica %></td>
-        <td><%= cobro.fecha_efectiva %></td>
-        <td><%= cobro.sale_id %></td>
-        <td><%= cobro.tipo %></td>
-        <td><%= link_to 'Show', cobro %></td>
-        <td><%= link_to 'Edit', edit_cobro_path(cobro) %></td>
-        <td><%= link_to 'Destroy', cobro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "#{cobro.created_at.strftime('%d-%m-%Y')}", cobro %></td>
+        <td><%= cobro.cantidad %>€</td>
+        <td><%= cobro.fecha_teorica.strftime('%d-%m-%Y') %></td>
+        <% unless cobro.fecha_efectiva == nil %>
+          <td><%= cobro.fecha_efectiva.strftime('%d-%m-%Y') %></td>
+        <% else %>
+          <td class = "rouge"> No cobrado </td>
+        <% end %>
+        <td><%= link_to "#{cobro.sale.id}) #{cobro.sale.car.marca} #{cobro.sale.car.modelo}", cobro.sale , :style=> "color: black;"%></td>
+        <% if cobro.tipo == "metalico"%>
+          <td class = "rouge"><%= cobro.tipo %></td>
+        <% elsif cobro.tipo == "coche" %>
+          <td class = "orangina"><%= cobro.tipo %></td>
+        <% else %>
+          <td class = "verd"><%= cobro.tipo %></td>
+        <% end %>
+        <td><%= link_to 'x', cobro, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Cobro', new_cobro_path %>

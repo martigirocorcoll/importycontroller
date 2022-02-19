@@ -36,21 +36,19 @@
         <th>Precio</th>
         <th>Comercial</th>
         <th>Estado importación</th>
-        <th colspan="3"></th>
+        <th>Venta</th>
       </tr>
     </thead>
 
     <tbody>
       <%  @car.sales.each do |sale| %>
         <tr>
-          <td><%= sale.operacion.id %></td>
-          <td><%= sale.persona.nombre + " " + sale.persona.apellido%></td>
+          <td><%= link_to "#{sale.operacion.id}", operacion_path(sale.operacion) %></td>
+          <td><%= link_to "#{sale.persona.nombre + " " + sale.persona.apellido}", persona_path(sale.persona), :style=> "color: black;"%></td>
           <td><%= sale.precio  %> €</td>
           <td><%= sale.operacion.comercial %></td>
           <td><%= sale.operacion.estado%></td>
-          <td><%= link_to "Show comprador", persona_path(sale.persona)%></td>
-          <td><%= link_to "Show sale", sale_path(sale)%></td>
-          <td><%= link_to "Show operacion", operacion_path(sale.operacion)%></td>
+          <td><%= link_to "Sale #{sale.id}", sale_path(sale), :style=> "color: black;"%></td>
         </tr>
       <% end %>
     </tbody>
@@ -70,21 +68,19 @@
         <th>Precio</th>
         <th>Comercial</th>
         <th>Estado importación</th>
-        <th colspan="3"></th>
+        <th>Compra</th>
       </tr>
     </thead>
 
     <tbody>
       <% @car.compras.each do |compra| %>
         <tr>
-          <td><%= compra.operacion.id %></td>
-          <td><%= compra.persona.nombre + " " + compra.persona.apellido%></td>
+          <td><%= link_to "#{compra.operacion.id}",  operacion_path(compra.operacion)%></td>
+          <td><%= link_to "#{compra.persona.nombre + " " + compra.persona.apellido}", persona_path(compra.persona), :style=> "color: black;" %></td>
           <td><%= compra.precio  %> €</td>
           <td><%= compra.operacion.comercial %></td>
           <td><%= compra.operacion.estado%></td>
-          <td><%= link_to "Show vendedor", persona_path(compra.persona)%></td>
-          <td><%= link_to "Show compra", compra_path(compra)%></td>
-          <td><%= link_to "Show operacion", operacion_path(compra.operacion)%></td>
+          <td><%= link_to "Compra #{compra.id}", compra_path(compra), :style=> "color: black;"%></td>
         </tr>
       <% end %>
     </tbody>

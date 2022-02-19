@@ -1,41 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Compras</h1>
+<div class = "d-flex justify-content-around align-items-center">
+<h1>Todas las compras</h1>
+<%= link_to '+ Nueva compra', new_compra_path, :class => "btn btn-outline-warning" %>
+</div>
 
-<table>
+<table class = "table table-hover">
   <thead>
     <tr>
-      <th>Precio</th>
-      <th>Iva</th>
+      <th>Cmpra</th>
       <th>Fecha</th>
       <th>Tipo</th>
-      <th>Categoria</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+      <th>Iva</th>
       <th>Persona</th>
       <th>Car</th>
-      <th>Operacion</th>
-      <th colspan="3"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @compras.each do |compra| %>
       <tr>
-        <td><%= compra.precio %></td>
-        <td><%= compra.iva %></td>
-        <td><%= compra.fecha %></td>
+        <td><%= link_to "Nº #{compra.id}", compra %></td>
+        <td><%= compra.fecha.strftime('%d-%m-%Y') %></td>
         <td><%= compra.tipo %></td>
         <td><%= compra.categoria %></td>
-        <td><%= compra.persona_id %></td>
-        <td><%= compra.car_id %></td>
-        <td><%= compra.operacion_id %></td>
-        <td><%= link_to 'Show', compra %></td>
-        <td><%= link_to 'Edit', edit_compra_path(compra) %></td>
-        <td><%= link_to 'Destroy', compra, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= compra.precio %>€</td>
+        <td><%= compra.iva.to_i * 100%>%</td>
+        <td><%= link_to "#{compra.persona.nombre + " " + compra.persona.apellido}", compra.persona, :style=> "color: black;"  %></td>
+        <td><%= link_to "#{compra.car.marca + " " + compra.car.modelo}", compra.car, :style=> "color: black;" %></td>
+        <td><%= link_to 'x', compra, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Compra', new_compra_path %>

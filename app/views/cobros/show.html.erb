@@ -1,29 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Cantidad:</strong>
-  <%= @cobro.cantidad %>
-</p>
+<div class = "d-flex justify-content-between align-items-center">
+  <h1 class = "text-center">Cobro <%= @cobro.id %></h1>
+  <%= link_to 'Edit', edit_cobro_path(@cobro), :class => "btn btn-outline-primary btn-lg" %>
+</div>
 
-<p>
-  <strong>Fecha teorica:</strong>
-  <%= @cobro.fecha_teorica %>
-</p>
 
-<p>
-  <strong>Fecha efectiva:</strong>
-  <%= @cobro.fecha_efectiva %>
-</p>
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Cantidad</th>
+      <th>Fecha teorica</th>
+      <th>Fecha efectiva</th>
+      <th>Tipo</th>
+      <th>Sale</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Sale:</strong>
-  <%= @cobro.sale_id %>
-</p>
-
-<p>
-  <strong>Tipo:</strong>
-  <%= @cobro.tipo %>
-</p>
-
-<%= link_to 'Edit', edit_cobro_path(@cobro) %> |
-<%= link_to 'Back', cobros_path %>
+    <tbody>
+      <tr>
+        <td><%= @cobro.cantidad %>€</td>
+        <td><%= @cobro.fecha_teorica.strftime('%d-%m-%Y') %></td>
+        <% unless @cobro.fecha_efectiva == nil %>
+          <td><%= @cobro.fecha_efectiva.strftime('%d-%m-%Y') %></td>
+        <% else %>
+          <td class = "rouge"> No pagado </td>
+        <% end %>
+        <% if @cobro.tipo == "metalico"%>
+          <td class = "rouge"><%= @cobro.tipo %></td>
+        <% elsif @cobro.tipo == "coche" %>
+          <td class = "orangina"><%= @cobro.tipo %></td>
+        <% else %>
+          <td class = "verd"><%= @cobro.tipo %></td>
+        <% end %>
+         <td> <%= link_to "#{@cobro.sale.id}) #{@cobro.sale.car.marca} #{@cobro.sale.car.modelo}", @cobro.sale, :class => "btn btn-primary" %>
+        </td>
+      </tr>
+  </tbody>
+</table>

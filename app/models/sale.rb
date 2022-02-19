@@ -14,7 +14,7 @@ class Sale < ApplicationRecord
     return suma
   end
 
-  def pendiente
+  def pendiente_cobro
     self.precio - self.cobrado
   end
 

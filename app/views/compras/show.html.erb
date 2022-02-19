@@ -1,44 +1,107 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Precio:</strong>
-  <%= @compra.precio %>
-</p>
 
-<p>
-  <strong>Iva:</strong>
-  <%= @compra.iva %>
-</p>
+<div class= "d-flex barra-container">
+  <div class = "card-container">
+    <div class = "text-center">
+    <h1><%="#{@compra.id}) #{@compra.tipo} - #{@compra.precio.to_s}€"%></h1>
+    <h2><%="#{@compra.categoria}"%></h2>
+  </div>
+  <div class = "d-flex justify-content-center">
+    <div class = "text-center m-3">
+      <%= link_to 'Edita', edit_compra_path(@compra), :class => "btn btn-primary btn-lg" %>
+    </div>
+  </div>
 
-<p>
-  <strong>Fecha:</strong>
-  <%= @compra.fecha %>
-</p>
 
-<p>
-  <strong>Tipo:</strong>
-  <%= @compra.tipo %>
-</p>
-
-<p>
-  <strong>Categoria:</strong>
-  <%= @compra.categoria %>
-</p>
-
-<p>
-  <strong>Persona:</strong>
-  <%= @compra.persona_id %>
-</p>
-
-<p>
-  <strong>Car:</strong>
-  <%= @compra.car_id %>
-</p>
-
-<p>
-  <strong>Operacion:</strong>
-  <%= @compra.operacion_id %>
-</p>
-
-<%= link_to 'Edit', edit_compra_path(@compra) %> |
-<%= link_to 'Back', compras_path %>
+    <div class = "sale-card">
+      <div class = "d-flex justify-content-between align-items-baseline">
+        <h3><strong>Compra nº</strong></h3>
+        <h3><%= @compra.id %></h3>
+      </div>
+      <% if @compra.iva == 0.0 %>
+        <p><strong>Precio:</strong> <%= @compra.precio %>€ </p>
+      <% else %>
+        <p><strong>Precio:</strong> <%= (@compra.precio / (1+ @compra.iva)).to_i %>€ + <%= (@compra.iva * 100).to_i %>% = <strong><%= @compra.precio %>€</strong> </p>
+      <% end %>
+      <p>
+        <strong>Fecha:</strong>
+        <%= @compra.fecha.strftime("%d-%m-%Y") %>
+      </p>
+      <p>
+        <strong>Tipo:</strong>
+        <%= @compra.tipo %>
+      </p>
+      <p>
+        <strong>Descripción:</strong>
+        <%= @compra.categoria %>
+        </p>
+    </div>
+    <div class = "sale-card">
+      <div class = "d-flex justify-content-between align-items-baseline">
+        <h3><strong>Coche comprado</strong></h3>
+        <%= link_to "Abrir", @compra.car%></td>
+      </div>
+        <p><strong>Modelo:</strong> <%= @compra.car.marca + " " + @compra.car.modelo %> </p>
+        <p><strong>Kilometraje:</strong> <%= @compra.car.kilometraje %></p>
+        <p><strong>Año:</strong> <%= @compra.car.primeramat %></p>
+        <p><strong>Chasis:</strong> <%= @compra.car.chasis %></p>
+    </div>
+    <div class = "sale-card">
+      <div class = "d-flex justify-content-between align-items-baseline">
+        <h3><strong>Vendedor</strong></h3>
+        <%= link_to "Abrir", @compra.persona%></td>
+      </div>
+        <p><strong>Nombre:</strong> <%= @compra.persona.nombre + " " + @compra.persona.apellido %> </p>
+        <p><strong>NIF:</strong> <%= @compra.persona.cif %></p>
+        <p><strong>E-mail:</strong> <%= @compra.persona.mail %></p>
+        <p><strong>Telefono:</strong> <%= @compra.persona.telefono %></p>
+        <p><strong>Dirección:</strong> <%= @compra.persona.direccion + " " + @compra.persona.ciudad + " " + @compra.persona.cp + " " + @compra.persona.pais %></p>
+      </div>
+    <div class = "sale-card">
+      <div class = "d-flex justify-content-between align-items-baseline">
+        <h3><strong>Operación</strong></h3>
+        <%= link_to @compra.operacion do%>
+          Abrir
+        <% end %>
+      </div>
+        <p><strong>Operación:</strong> <%= @compra.operacion.titol %> </p>
+        <p><strong>Estado:</strong> <%= @compra.operacion.estado %></p>
+        <p><strong>Comercial:</strong> <%= @compra.operacion.comercial %></p>
+    </div>
+  </div>
+  <div class = "lateral-container">
+    <div class = "barra-lateral">
+      <div class = "d-flex justify-content-between">
+        <% if @compra.pendiente_pago == 0 %>
+          <h3 class = "text-center green"> Pagado</h3>
+        <% else %>
+          <h3 class = "text-center"> Pendiente: <%= @compra.pendiente_pago%>€</h3>
+        <% end %>
+          <%= link_to " + ", new_pago_path, :class => "añadido" %>
+      </div>
+      <table class = "table mt-4">
+        <tr>
+          <th>Pago</th>
+          <th>Cantidad</th>
+          <th>Fecha</th>
+          <th>Tipo</th>
+          <th>X</th>
+        </tr>
+        <% @compra.pagos.each do |pago| %>
+        <tr>
+          <% unless pago.fecha_efectiva == nil %>
+            <td><%= link_to 'Si', edit_pago_path(pago), :class => "text_none" %></td>
+          <% else %>
+            <td><%= link_to 'No', edit_pago_path(pago), :class => "text_none" %></td>
+          <% end %>
+            <td><%= pago.cantidad %>€</td>
+            <td><%= pago.fecha_teorica.strftime('%d-%m-%Y') %></td>
+            <td><%= pago.tipo %></td>
+            <td><%= link_to 'x', pago, method: :delete, data: { confirm: 'Are you sure?' }, :class => "text_none" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

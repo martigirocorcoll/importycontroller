@@ -1,14 +1,160 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Estado:</strong>
-  <%= @operacion.estado %>
-</p>
+<div class = "d-flex justify-content-around align-items-center">
+  <h1 class = "text-center">Operación <%= @operacion.titol %></h1>
+  <%= link_to 'Edit', edit_operacion_path(@operacion), :class => "btn btn-outline-primary btn-lg" %>
+</div>
 
-<p>
-  <strong>Comercial:</strong>
-  <%= @operacion.comercial %>
-</p>
 
-<%= link_to 'Edit', edit_operacion_path(@operacion) %> |
-<%= link_to 'Back', operacions_path %>
+<div class = "sale-card mb-5">
+      <div class = "d-flex justify-content-between align-items-baseline">
+        <h3><strong>Operación nº</strong></h3>
+        <h3><%= @operacion.id %></h3>
+      </div>
+      <table class ="table tableprogress">
+          <tr>
+          <% if @operacion.estado.to_i < 2 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 3 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 4 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 5 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 6 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 7 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 8 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 9 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 10 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 11 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 12 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          <% if @operacion.estado.to_i < 13 %>
+            <th>|</th>
+          <% else %>
+            <th class ="succes">|</th>
+          <% end %>
+          </tr>
+      </table>
+      <p>
+        <strong>Estado operación:</strong>
+        <%= @operacion.estado %>
+      </p>
+
+      <p>
+        <strong>Comercial:</strong>
+        <%= @operacion.comercial %>
+      </p>
+</div>
+
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Fecha</th>
+      <th>Identificador</th>
+      <th>Descripcion</th>
+      <th>Contacto</th>
+      <th>Precio</th>
+      <th>Iva</th>
+      <th>Total</th>
+      <th>Pendiente</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @operacion.sales.first != nil %>
+      <tr class="table-success">
+        <td><%= link_to"Venta",@operacion.sales.first %></td>
+          <td><%= @operacion.sales.first.fecha.strftime('%d-%m-%Y')%></td>
+          <td><%= @operacion.sales.first.numero%></td>
+          <td><%= link_to"#{@operacion.sales.first.car.marca} #{@operacion.sales.first.car.modelo}",@operacion.sales.first.car  %></td>
+          <td><%= link_to"#{@operacion.sales.first.persona.nombre} #{@operacion.sales.first.persona.apellido}", @operacion.sales.first.persona %></td>
+          <% if @operacion.sales.first.iva == 0.0 %>
+            <td><%= @operacion.sales.first.precio %>€</td>
+            <td>-</td>
+          <% else %>
+            <td><%= (@operacion.sales.first.precio / (1 + @operacion.sales.first.iva)).to_i %>€</td>
+            <td><%= (@operacion.sales.first.precio / (1 + @operacion.sales.first.iva) * (@operacion.sales.first.iva)).to_i %>€</td>
+          <% end %>
+          <td><%= @operacion.sales.first.precio %>€</td>
+          <td><%= @operacion.sales.first.pendiente_cobro %>€</td>
+      </tr>
+    <% end %>
+    <% @operacion.compras.each do |compra| %>
+      <tr>
+        <td><%= link_to"Compra",compra %></td>
+        <td><%= compra.fecha.strftime('%d-%m-%Y')%></td>
+        <td><%= compra.id%></td>
+        <td><%= "#{compra.tipo} - #{compra.categoria}"  %></td>
+        <td><%= link_to"#{compra.persona.nombre} #{compra.persona.apellido}", compra.persona %></td>
+        <% if compra.iva == 0.0 %>
+          <td>-<%= compra.precio %>€</td>
+          <td>-</td>
+        <% else %>
+          <td>-<%= (compra.precio / (1 + compra.iva)).to_i %>€</td>
+          <td>-<%= (compra.precio / (1 + compra.iva) * (compra.iva)).to_i %>€</td>
+        <% end %>
+          <td>-<%= compra.precio %>€</td>
+          <td>-<%= compra.pendiente_pago %>€</td>
+      </tr>
+    <% end %>
+  </tbody>
+    <tfoot>
+    <tr>
+      <th>-</th>
+      <th>-</th>
+      <th>-</th>
+      <th>-</th>
+      <th>-</th>
+      <th><%= @operacion.margen_neto_iva_si_resta %>€</th>
+      <th><%= @operacion.iva_iva_si_resta %>€</th>
+      <th>-</th>
+      <% if @operacion.pendiente < 0 %>
+        <th class = "rouge"><%= @operacion.pendiente %>€</th>
+      <% elsif @operacion.pendiente > 0 %>
+        <th class = "superblue"><%= @operacion.pendiente %>€</th>
+      <% else %>
+        <th class = "verd"><%= @operacion.pendiente %>€</th>
+      <% end %>
+    </tr>
+  </tfoot>
+</table>
