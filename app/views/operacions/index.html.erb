@@ -5,24 +5,29 @@
 <h1>Todas las operaciones</h1>
 <%= link_to '+ Nueva operación', new_operacion_path, :class => "btn btn-outline-warning" %>
 </div>
+<div class = "text-center m-3 filters">
+  <%= render 'form_ransack', operacion: @operacion %>
+</div>
 
 <table class = "table table-hover">
   <thead>
     <tr>
-      <th>Operación</th>
-      <th>Comercial</th>
-      <th>Estado</th>
+      <th><%= sort_link(@q, :id, 'Operacion', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :titol, 'Operacion', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :comercial, 'Comercial', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :estado, 'Estado', default_order: :desc) %></th>
       <th>Margen bruto</th>
       <th>IVA</th>
       <th>Pendiente</th>
-      <th colspan="3"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @operacions.each do |operacion| %>
       <tr>
-        <td><%= link_to "#{operacion.id} - #{operacion.titol}", operacion %></td>
+        <td><%= link_to operacion.id, operacion %></td>
+        <td><%= link_to operacion.titol, operacion %></td>
         <td><%= operacion.comercial %></td>
         <td><%= operacion.estado %></td>
         <th><%= operacion.margen_neto_iva_si_resta %>€</th>
@@ -30,9 +35,9 @@
         <% if operacion.pendiente < 0 %>
         <th class = "rouge"><%= operacion.pendiente %>€</th>
         <% elsif operacion.pendiente > 0 %>
-          <th class = "superblue"><%= operacion.pendiente %>€</th>
-        <% else %>
           <th class = "verd"><%= operacion.pendiente %>€</th>
+        <% else %>
+          <th class = "black"><%= operacion.pendiente %>€</th>
         <% end %>
         <td><%= link_to 'x', operacion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

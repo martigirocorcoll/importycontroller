@@ -3,7 +3,8 @@ class OperacionsController < ApplicationController
 
   # GET /operacions or /operacions.json
   def index
-    @operacions = Operacion.all
+    @q = Operacion.ransack(params[:q])
+    @operacions = @q.result(distinct: true)
   end
 
   # GET /operacions/1 or /operacions/1.json

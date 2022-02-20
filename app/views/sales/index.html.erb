@@ -1,19 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <div class = "d-flex justify-content-around align-items-center">
-<h1>Todas las ventas</h1>
-<%= link_to '+ Nueva venta', new_sale_path, :class => "btn btn-outline-warning" %>
+  <h1>Todas las ventas</h1>
+  <%= link_to '+ Nueva venta', new_sale_path, :class => "btn btn-outline-warning" %>
 </div>
+  <div class = "text-center m-3 filters">
+    <%= render 'form_ransack', sale: @sale %>
+  </div>
 
 <table class = "table table-hover">
   <thead>
     <tr>
-      <th>Factura</th>
-      <th>Fecha</th>
+      <th><%= sort_link(@q, :numero, 'Factura', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :fecha, 'Fecha', default_order: :desc) %></th>
       <th>Coche</th>
       <th>Comprador</th>
-      <th>Precio</th>
-      <th>Iva</th>
+      <th><%= sort_link(@q, :precio, 'Precio', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :iva, 'Iva', default_order: :desc) %></th>
       <th>Coche cambio</th>
       <th>Pendiente</th>
       <th colspan="3"></th>
@@ -36,7 +39,7 @@
         <% end %>
         <% if sale.pendiente_cobro > 0%>
           <td class = "rouge"><%= sale.pendiente_cobro %> €</td>
-        <% elsif sale.pendiente < 0 %>
+        <% elsif sale.pendiente_cobro < 0 %>
           <td class = "orangina"><%= sale.pendiente_cobro %> €</td>
         <% else %>
           <td class = "verd"><%= sale.pendiente_cobro %> €</td>

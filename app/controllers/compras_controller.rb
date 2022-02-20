@@ -3,7 +3,8 @@ class ComprasController < ApplicationController
 
   # GET /compras or /compras.json
   def index
-    @compras = Compra.all
+    @q = Compra.ransack(params[:q])
+    @compras = @q.result(distinct: true)
   end
 
   # GET /compras/1 or /compras/1.json

@@ -3,7 +3,8 @@ class CobrosController < ApplicationController
 
   # GET /cobros or /cobros.json
   def index
-    @cobros = Cobro.all
+    @q = Cobro.ransack(params[:q])
+    @cobros = @q.result(distinct: true)
   end
 
   # GET /cobros/1 or /cobros/1.json

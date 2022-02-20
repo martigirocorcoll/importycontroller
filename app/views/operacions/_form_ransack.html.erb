@@ -1,0 +1,7 @@
+<%= search_form_for @q do |f| %>
+
+  <%= f.search_field :id_eq, placeholder: "Busca un id "%>
+  <%= f.search_field :titol_or_comercial_cont, placeholder: "Busca una operacion "%>
+
+  <%= f.submit 'Filtrar', :class => "btn btn-secondary" %>
+<% end %>

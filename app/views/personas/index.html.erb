@@ -4,10 +4,15 @@
 <h1>Todos los contactos</h1>
 <%= link_to '+ Nuevo contacto', new_persona_path, :class => "btn btn-outline-warning " %>
 </div>
+
+<div class = "text-center m-3 filters">
+  <%= render 'form_ransack', persona: @persona %>
+</div>
+
 <table class = "table table-hover">
   <thead>
     <tr>
-      <th>Creación</th>
+      <th><%= sort_link(@q, :created_at, 'Creación', default_order: :desc) %></th>
       <th>Nombre</th>
       <th>CIF</th>
       <th>Mail</th>

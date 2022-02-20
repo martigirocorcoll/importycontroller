@@ -4,18 +4,22 @@
 <h1>Todas las compras</h1>
 <%= link_to '+ Nueva compra', new_compra_path, :class => "btn btn-outline-warning" %>
 </div>
-
+<div class = "text-center m-3 filters">
+<%= render 'form_ransack', compra: @compra %>
+</div>
 <table class = "table table-hover">
   <thead>
     <tr>
-      <th>Cmpra</th>
-      <th>Fecha</th>
-      <th>Tipo</th>
-      <th>Descripcion</th>
-      <th>Precio</th>
-      <th>Iva</th>
+      <th><%= sort_link(@q, :id, 'Compra', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :fecha, 'Fecha', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :tipo, 'Tipo', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :categoria, 'Descripcion', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :precio, 'Precio', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :iva, 'Iva', default_order: :desc) %></th>
       <th>Persona</th>
       <th>Car</th>
+      <th>Pendiente</th>
+
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -31,6 +35,13 @@
         <td><%= compra.iva.to_i * 100%>%</td>
         <td><%= link_to "#{compra.persona.nombre + " " + compra.persona.apellido}", compra.persona, :style=> "color: black;"  %></td>
         <td><%= link_to "#{compra.car.marca + " " + compra.car.modelo}", compra.car, :style=> "color: black;" %></td>
+        <% if compra.pendiente_pago > 0%>
+          <td class = "rouge"><%= compra.pendiente_pago %> €</td>
+        <% elsif compra.pendiente_pago < 0 %>
+          <td class = "orangina"><%= compra.pendiente_pago %> €</td>
+        <% else %>
+          <td class = "verd"><%= compra.pendiente_pago %> €</td>
+        <% end %>
         <td><%= link_to 'x', compra, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

@@ -2,18 +2,23 @@
 
 <div class = "d-flex justify-content-around align-items-center">
 <h1>Todos los cobros</h1>
+
 <%= link_to '+ Nuevo cobro', new_cobro_path, :class => "btn btn-outline-warning" %>
 </div>
+<div class = "text-center m-3 filters">
+<%= render 'form_ransack', cobro: @cobro %>
+</div>
+
 
 <table class = "table table-hover">
   <thead>
     <tr>
-      <th>Creación</th>
-      <th>Cantidad</th>
-      <th>Fecha teorica</th>
-      <th>Fecha efectiva</th>
+      <th><%= sort_link(@q, :created_at, 'Creación', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :cantidad, 'Cantidad', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :fecha_teorica, 'Fecha teorica', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :fecha_efetiva, 'Fecha_efetiva', default_order: :desc) %></th>
       <th>Sale</th>
-      <th>Tipo</th>
+      <th><%= sort_link(@q, :tipo, 'Tipo', default_order: :desc) %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -22,7 +27,7 @@
     <% @cobros.each do |cobro| %>
       <tr>
         <td><%= link_to "#{cobro.created_at.strftime('%d-%m-%Y')}", cobro %></td>
-        <td><%= cobro.cantidad %>€</td>
+        <td><%= cobro.cantidad.to_i %>€</td>
         <td><%= cobro.fecha_teorica.strftime('%d-%m-%Y') %></td>
         <% unless cobro.fecha_efectiva == nil %>
           <td><%= cobro.fecha_efectiva.strftime('%d-%m-%Y') %></td>

@@ -1,0 +1,17 @@
+<%= search_form_for @q do |f| %>
+  <div class = "d-flex justify-content-around">
+    <div>
+    <%= f.text_field :numero_or_car_marca_or_car_modelo_or_persona_nombre_cont, placeholder: "Buscar una venta"%>
+    </div><div>
+    <%= f.label :fecha_gteq, 'Desde:' %>
+    <%= f.date_select :fecha_gteq, {:include_blank => true, :default => nil} %>
+    </div><div>
+    <%= f.label :fecha_lteq, 'Hasta:' %>
+    <%= f.date_select :fecha_lteq, {:include_blank => true, :default => nil}%>
+    </div><div>
+    <%= f.text_field :precio_eq, placeholder: "Busca un precio"%>
+    </div><div>
+    <%= f.submit 'Filtrar', :class => "btn btn-secondary"%>
+    </div>
+  </div>
+<% end %>

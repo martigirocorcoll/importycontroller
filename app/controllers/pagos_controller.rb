@@ -3,7 +3,8 @@ class PagosController < ApplicationController
 
   # GET /pagos or /pagos.json
   def index
-    @pagos = Pago.all
+    @q = Pago.ransack(params[:q])
+    @pagos = @q.result(distinct: true)
   end
 
   # GET /pagos/1 or /pagos/1.json

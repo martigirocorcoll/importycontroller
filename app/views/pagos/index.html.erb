@@ -3,13 +3,18 @@
 <h1> Todos los pagos</h1>
 <%= link_to '+ Nuevo pago', new_pago_path, :class => "btn btn-outline-warning" %>
 </div>
+<div class = "text-center m-3 filters">
+<%= render 'form_ransack', cobro: @cobro %>
+</div>
+
+
 <table class = "table table-hover">
   <thead>
     <tr>
-      <th>Creación</th>
-      <th>Cantidad</th>
-      <th>Fecha teorica</th>
-      <th>Fecha efectiva</th>
+      <th><%= sort_link(@q, :created_at, 'Creación', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :cantidad, 'Cantidad', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :fecha_teorica, 'Fecha teorica', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :fecha_efetiva, 'Fecha_efetiva', default_order: :desc) %></th>
       <th>Compra</th>
       <th>Tipo</th>
       <th colspan="1"></th>
@@ -20,7 +25,7 @@
     <% @pagos.each do |pago| %>
       <tr>
         <td><%= link_to "#{pago.created_at.strftime('%d-%m-%Y')}", pago %></td>
-        <td><%= pago.cantidad %></td>
+        <td><%= pago.cantidad.to_i %></td>
         <td><%= pago.fecha_teorica.strftime('%d-%m-%Y') %></td>
         <% unless pago.fecha_efectiva == nil %>
           <td><%= pago.fecha_efectiva.strftime('%d-%m-%Y') %></td>

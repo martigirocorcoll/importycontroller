@@ -1,0 +1,15 @@
+<%= search_form_for @q do |f| %>
+  <div class = "d-flex justify-content-around">
+    <div>
+    <%= f.text_field :cantidad_eq, placeholder: "Busca una cantidad"%>
+    </div><div>
+    <%= f.label :fecha_teorica_or_fecha_efectiva_gteq, 'Desde:' %>
+    <%= f.date_select :fecha_teorica_or_fecha_efectiva_gteq, {:include_blank => true, :default => nil} %>
+    </div><div>
+    <%= f.label :fecha_teorica_or_fecha_efectiva_lteq, 'Hasta:' %>
+    <%= f.date_select :fecha_teorica_or_fecha_efectiva_lteq, {:include_blank => true, :default => nil}%>
+    </div><div>
+    <%= f.submit 'Filtrar', :class => "btn btn-secondary"%>
+    </div>
+  </div>
+<% end %>
