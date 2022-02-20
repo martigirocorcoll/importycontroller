@@ -26,6 +26,16 @@
   <%= @car.chasis %>
 </p>
 
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <% @car.photos.each do |photo| %>
+        <div class="carousel-item">
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
+    <% end %>
+  </div>
+</div>
+
 <% if @car.sales != [] %>
   <h2> Vendido a:</h2>
   <table class = "table">
