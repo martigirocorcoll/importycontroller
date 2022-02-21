@@ -26,15 +26,21 @@
   <%= @car.chasis %>
 </p>
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <% @car.photos.each do |photo| %>
-        <div class="carousel-item">
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        </div>
-    <% end %>
-  </div>
-</div>
+<% if @car.papeles_aleman.attached? %>
+  <p>
+    <strong>Documentación de orígen:</strong>
+    <%= link_to("Descargar", cl_image_path("#{@car.papeles_aleman.key}.pdf")) %>
+  </p>
+<% end %>
+
+<% if @car.papeles_esp.attached? %>
+  <p>
+    <strong>Documentación española:</strong>
+    <%= link_to("Descargar", cl_image_path("#{@car.papeles_esp.key}.pdf")) %>
+  </p>
+<% end %>
+
+
 
 <% if @car.sales != [] %>
   <h2> Vendido a:</h2>
@@ -97,4 +103,10 @@
   </table>
 <% else %>
  <h2> Coche no comprado.</h2>
+<% end %>
+
+<h1>Archivos:</h1>
+
+<% @car.photos.each do |photo| %>
+    <%= link_to(cl_image_tag("#{photo.key}", height: 150, width: 200, crop: :fill), cl_image_path("#{photo.key}")) %>
 <% end %>

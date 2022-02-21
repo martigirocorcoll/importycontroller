@@ -28,6 +28,7 @@
     <%= f.association :operacion,
     collection: Operacion.all.map{|opera| ["#{opera.id}- " + opera.titol, opera.id]},
     input_html: { class: 'select2' } %>
+    <%= f.input :factura, as: :file %>
   </div>
 
   <div class="form-actions text-center mb-3">

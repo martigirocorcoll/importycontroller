@@ -41,7 +41,12 @@
 <p>
   <strong>Cif:</strong>
   <%= @persona.cif %>
+  <% if @persona.ident.attached? %>
+    <%= link_to("Descargar", cl_image_path("#{@persona.ident.key}.pdf")) %>
+  <% end %>
 </p>
+
+
 
 <% if @persona.sales != [] %>
   <h2> Le hemos vendido estos coches:</h2>

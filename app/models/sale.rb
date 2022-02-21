@@ -3,6 +3,9 @@ class Sale < ApplicationRecord
   belongs_to :car
   belongs_to :operacion
   has_many :cobros, dependent: :destroy
+  has_one_attached :reserva
+  has_one_attached :factura
+  has_one_attached :garantia
 
   def cobrado
     suma = 0

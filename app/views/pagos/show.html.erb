@@ -14,7 +14,10 @@
       <th>Fecha teorica</th>
       <th>Fecha efectiva</th>
       <th>Tipo</th>
-      <th>compra</th>
+      <th>Compra</th>
+      <% if @pago.justificante.attached? %>
+        <th>Justificante</th>
+      <% end %>
     </tr>
   </thead>
       <tbody>
@@ -33,8 +36,12 @@
         <% else %>
           <td class = "verd"><%= @pago.tipo %></td>
         <% end %>
-         <td> <%= link_to "#{@pago.compra.id}) #{@pago.compra.car.marca} #{@pago.compra.car.modelo}", @pago.compra, :class => "btn btn-primary" %>
-        </td>
+         <td> <%= link_to "#{@pago.compra.id}) #{@pago.compra.car.marca} #{@pago.compra.car.modelo}", @pago.compra, :class => "btn btn-primary" %></td>
+        <% if @pago.justificante.attached? %>
+          <td>
+            <%= link_to("Descargar", cl_image_path("#{@pago.justificante.key}.pdf")) %>
+          </td>
+        <% end %>
       </tr>
   </tbody>
 </table>

@@ -13,8 +13,29 @@
       <%= link_to 'Reserva', reserva_path(:format => :pdf), :class => "btn btn-primary btn-lg", target: :_blank %>
     </div>
     <div class = "text-center m-3">
-      <%= link_to 'Factura', reserva_path(:format => :pdf), :class => "btn btn-primary btn-lg", target: :_blank %>
+      <%= link_to 'Factura', factura_path(:format => :pdf), :class => "btn btn-primary btn-lg", target: :_blank %>
     </div>
+  </div>
+
+  <div class = "sale-card d-flex justify-content-around align-items-center">
+    <% if @sale.reserva.attached? %>
+      <div>
+        <strong>Reserva firmada:</strong>
+        <%= link_to("Descargar", cl_image_path("#{@sale.reserva.key}.pdf")) %>
+      </div>
+    <% end %>
+    <% if @sale.factura.attached? %>
+      <div>
+        <strong>Factura entregada:</strong>
+        <%= link_to("Descargar", cl_image_path("#{@sale.factura.key}.pdf")) %>
+      </div>
+    <% end %>
+    <% if @sale.garantia.attached? %>
+      <div>
+        <strong>Garantia firmada:</strong>
+        <%= link_to("Descargar", cl_image_path("#{@sale.garantia.key}.pdf")) %>
+      </div>
+    <% end %>
   </div>
 
     <div class = "sale-card">

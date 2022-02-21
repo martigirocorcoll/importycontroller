@@ -66,6 +66,6 @@ class PersonasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def persona_params
-      params.require(:persona).permit(:nombre, :apellido, :mail, :telefono, :direccion, :ciudad, :cp, :pais, :cif)
+      params.require(:persona).permit(:nombre, :apellido, :mail, :telefono, :direccion, :ciudad, :cp, :pais, :cif, :ident)
     end
 end

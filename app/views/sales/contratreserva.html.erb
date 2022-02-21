@@ -1,4 +1,4 @@
-<table style="width:100%">
+<table style="width:100%; font-family: Arial, Helvetica, sans-serif;">
   <tr>
     <td>
       <%= image_tag image_url("logo.png") %>
@@ -11,7 +11,7 @@
   </tr>
 </table>
 
-<div style="border-bottom: 5px solid black;">
+<div style="border-bottom: 2px solid black; font-family: Arial, Helvetica, sans-serif; padding-bottom: 15px;">
   <table style="width:100%">
     <td>
       <h1>Datos del vehículo:</h1>
@@ -43,7 +43,7 @@
     </td>
   </table>
 </div>
-<div style="border-bottom: 5px solid black;">
+<div style="border-bottom: 2px solid black; font-family: Arial, Helvetica, sans-serif; padding-bottom: 15px;">
 <h1>Datos de la reserva:</h1>
   <%if @sale.iva == 0 %>
     <p>
@@ -77,7 +77,7 @@
     CAIXESBBXXX
   </p>
 </div>
-<div>
+<div style= "font-family: Arial, Helvetica, sans-serif;">
 <h1>Cláusulas:</h1>
   <p>
     Reserva del vehículo descrito a favor de: <%= @sale.persona.nombre + " " + @sale.persona.apellido %> con NIF <%= @sale.persona.cif %> y con domicilio en <%= @sale.persona.direccion + ", " + @sale.persona.ciudad + " (" + @sale.persona.cp+ ") ," + @sale.persona.pais %>. (de aquí en adelante, EL CLIENTE).
@@ -121,7 +121,7 @@
 </div>
 
 
-<table style="width:100%">
+<table style="width:100%; font-family: Arial, Helvetica, sans-serif;">
   <tr>
     <td>
       <h2 style="text-align:center;"><%= @sale.persona.nombre + " " + @sale.persona.apellido %></h2>

@@ -26,8 +26,11 @@ class SalesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "factura - #{@sale.numero}", template: "sales/factura.html.erb", encoding: 'utf8'   # Excluding ".pdf" extension.
-      end
+        render pdf: "factura - #{@sale.numero}",
+        template: "sales/factura.html.erb",
+        encoding: 'utf8',
+        header: { font_name: "Arial"}
+       end
     end
   end
 
@@ -86,6 +89,6 @@ class SalesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def sale_params
-      params.require(:sale).permit(:precio, :iva, :fecha, :persona_id, :car_id, :operacion_id, :numero, :coche_cambio, :coche_cambio_precio, :coche_cambio_modelo, :coche_cambio_km, :coche_cambio_matricula, :coche_cambio_ano )
+      params.require(:sale).permit(:precio, :iva, :fecha, :persona_id, :car_id, :operacion_id, :numero, :coche_cambio, :coche_cambio_precio, :coche_cambio_modelo, :coche_cambio_km, :coche_cambio_matricula, :coche_cambio_ano, :reserva, :factura, :garantia )
     end
 end

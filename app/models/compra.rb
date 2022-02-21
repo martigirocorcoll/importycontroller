@@ -3,6 +3,7 @@ class Compra < ApplicationRecord
   belongs_to :car
   belongs_to :operacion
   has_many :pagos, dependent: :destroy
+  has_one_attached :factura
 
   def pagado
     suma = 0

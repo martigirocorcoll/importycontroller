@@ -66,6 +66,6 @@ class CobrosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cobro_params
-      params.require(:cobro).permit(:cantidad, :fecha_teorica, :fecha_efectiva, :sale_id, :tipo)
+      params.require(:cobro).permit(:cantidad, :fecha_teorica, :fecha_efectiva, :sale_id, :tipo, :justificante)
     end
 end
