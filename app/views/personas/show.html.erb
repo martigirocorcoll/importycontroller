@@ -68,7 +68,7 @@
           <td><%= link_to "#{sale.operacion.id}", operacion_path(sale.operacion)%></td>
           <td><%= link_to "#{sale.car.marca + " " + sale.car.modelo}",car_path(sale.car), :style=> "color: black;" %></td>
           <td><%= sale.precio  %> €</td>
-          <td><%= sale.operacion.comercial %></td>
+          <td><%= sale.operacion.venedor %></td>
           <td><%= sale.operacion.estado%></td>
           <td><%= link_to "Sale #{sale.id}", sale_path(sale), :style=> "color: black;"%></td>
         </tr>
@@ -100,7 +100,7 @@
           <td><%= link_to "#{compra.operacion.id}", operacion_path(compra.operacion)%></td>
           <td><%= link_to "#{compra.car.marca + " " + compra.car.modelo}",car_path(compra.car), :style=> "color: black;" %></td>
           <td><%= compra.precio  %> €</td>
-          <td><%= compra.operacion.comercial %></td>
+          <td><%= compra.operacion.venedor %></td>
           <td><%= compra.operacion.estado%></td>
           <td><%= link_to "Compra #{compra.id}", compra_path(compra), :style=> "color: black;"%></td>
         </tr>

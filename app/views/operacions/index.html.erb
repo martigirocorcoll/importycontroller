@@ -14,7 +14,7 @@
     <tr>
       <th><%= sort_link(@q, :id, 'Operacion', default_order: :desc) %></th>
       <th><%= sort_link(@q, :titol, 'Operacion', default_order: :desc) %></th>
-      <th><%= sort_link(@q, :comercial, 'Comercial', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :venedor, 'Comercial', default_order: :desc) %></th>
       <th><%= sort_link(@q, :estado, 'Estado', default_order: :desc) %></th>
       <th>Margen bruto</th>
       <th>IVA</th>
@@ -28,7 +28,7 @@
       <tr>
         <td><%= link_to operacion.id, operacion %></td>
         <td><%= link_to operacion.titol, operacion %></td>
-        <td><%= operacion.comercial %></td>
+        <td><%= operacion.venedor %></td>
         <td><%= operacion.estado %></td>
         <th><%= operacion.margen_neto_iva_si_resta %>€</th>
         <th><%= operacion.iva_iva_si_resta %>€</th>

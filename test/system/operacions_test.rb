@@ -14,7 +14,7 @@ class OperacionsTest < ApplicationSystemTestCase
     visit operacions_url
     click_on "New Operacion"
 
-    fill_in "Comercial", with: @operacion.comercial
+    fill_in "Comercial", with: @operacion.venedor
     fill_in "Estado", with: @operacion.estado
     click_on "Create Operacion"
 
@@ -26,7 +26,7 @@ class OperacionsTest < ApplicationSystemTestCase
     visit operacions_url
     click_on "Edit", match: :first
 
-    fill_in "Comercial", with: @operacion.comercial
+    fill_in "Comercial", with: @operacion.venedor
     fill_in "Estado", with: @operacion.estado
     click_on "Update Operacion"
 

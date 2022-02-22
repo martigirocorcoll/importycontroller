@@ -66,6 +66,6 @@ class OperacionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def operacion_params
-      params.require(:operacion).permit(:estado, :comercial, :titol)
+      params.require(:operacion).permit(:estado, :venedor, :titol)
     end
 end
