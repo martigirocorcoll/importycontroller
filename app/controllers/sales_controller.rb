@@ -21,6 +21,16 @@ class SalesController < ApplicationController
     end
   end
 
+    def contratreserva100
+    @sale = Sale.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "contrato-reserva", template: "sales/contratreserva100.html.erb", encoding: 'utf8'   # Excluding ".pdf" extension.
+      end
+    end
+  end
+
   def factura
     @sale = Sale.find(params[:id])
     respond_to do |format|

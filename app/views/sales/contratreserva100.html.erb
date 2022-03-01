@@ -62,12 +62,8 @@
     3.000 €
   </li>
   <li>
-    <strong>Importe 2a reserva:</strong>
-    <%= number_to_currency(@sale.precio.to_i * 0.4 - 3000)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %> €
-  </li>
-  <li>
-    <strong>Importe pago final:</strong>
-    <%= number_to_currency(@sale.precio.to_i * 0.6)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %> €
+    <strong>Importe pago:</strong>
+    <%= number_to_currency(@sale.precio.to_i - 3000)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %> €
   </li>
   </ul>
   <p>
@@ -93,25 +89,8 @@
       Se hará un pago inicial del importe de la 1a reserva de 3.000€ para poder reservar el coche en Alemania.
     </li>
     <li>
-      Seguidamente, se hará el pago de la 2a reserva, de  <%= number_to_currency(@sale.precio.to_i * 0.4 - 3000)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€ para iniciar los trámites de la importación
+      Seguidamente, se hará el pago restante de  <%= number_to_currency(@sale.precio.to_i - 3000)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€ para iniciar los trámites de la importación. Se entregará el coche al cliente en un plazo aproximado de 6 semanas.
     </li>
-    <% unless @sale.coche_cambio == true %>
-      <li>
-        El pago restante del vehículo, <%= number_to_currency(@sale.precio.to_i * 0.6)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€, se hará a la entrega, una vez este ya esté matriculado a nombre del cliente. Dicha entrega se realizará en un plazo aproximado de 6 semanas.
-      </li>
-    <% else %>
-      <li>
-        El pago restante del vehículo, <%= number_to_currency(@sale.precio.to_i * 0.6)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€, se hará a la entrega, una vez este ya esté matriculado a nombre del cliente. Dicha entrega se realizará en un plazo aproximado de 6 semanas. El pago se hará de la siguiente forma:
-        <ul>
-          <li>
-            <%= number_to_currency(@sale.precio.to_i * 0.6 - @sale.coche_cambio_precio.to_i)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€ se pagaran por transferencia bancaria.
-          </li>
-          <li>
-            Los <%= number_to_currency(@sale.coche_cambio_precio)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€ restantes se pagaran mediante la entrega de un coche a cambio. Se trata de un <%= @sale.coche_cambio_modelo %> con primera matriculación el <%= @sale.coche_cambio_ano %>, un kilometraje de <%= @sale.coche_cambio_km %> km y con matrícula <%= @sale.coche_cambio_matricula %>.
-          </li>
-        </ul>
-      </li>
-    <% end %>
 
   </ol>
 
