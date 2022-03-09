@@ -13,6 +13,7 @@
     <tr>
       <th><%= sort_link(@q, :numero, 'Factura', default_order: :desc) %></th>
       <th><%= sort_link(@q, :fecha, 'Fecha', default_order: :desc) %></th>
+      <th>Completo</th>
       <th>Coche</th>
       <th>Comprador</th>
       <th><%= sort_link(@q, :precio, 'Precio', default_order: :desc) %></th>
@@ -28,6 +29,11 @@
       <tr>
         <td><%= link_to "#{sale.numero}", sale %></td>
         <td><%= sale.fecha.strftime('%d-%m-%Y') %></td>
+        <% if sale.completo == "Completo" || sale.completo == "Bompleto" %>
+          <td class = "green-bk"><%= sale.completo %></td>
+        <% else %>
+          <td class = "red-bk"><%= sale.completo %></td>
+        <% end %>
         <td><%= link_to "#{sale.car.marca + " " + sale.car.modelo}", sale.car, :style=> "color: black;" %></td>
         <td><%= link_to "#{sale.persona.nombre + " " + sale.persona.apellido}", sale.persona, :style=> "color: black;" %></td>
         <td><%= sale.precio %>€</td>

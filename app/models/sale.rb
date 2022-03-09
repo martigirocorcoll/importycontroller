@@ -7,6 +7,22 @@ class Sale < ApplicationRecord
   has_one_attached :factura
   has_one_attached :garantia
 
+  def completo
+    apagar = self.cobros.pluck(:cantidad).sum
+    if self.precio > apagar
+      return "Incompleto"
+    elsif self.precio == apagar
+      return "Completo"
+    else
+      self.cobros.each do |pago|
+        if pago.tipo == "cash"
+          return "Bompleto"
+        end
+      end
+      return "Exceso"
+    end
+  end
+
   def cobrado
     suma = 0
     self.cobros.each do |pago|
@@ -18,6 +34,11 @@ class Sale < ApplicationRecord
   end
 
   def pendiente_cobro
+    self.cobros.pluck(:cantidad).sum - self.cobrado
+  end
+
+
+  def penndiente_cobro
     self.precio - self.cobrado
   end
 

@@ -26,29 +26,36 @@
     <div class="sidebar-heading">
         Operativa
     </div>
-    <li class="nav-item">
-      <%= link_to "Todas las operaciones", operacions_path, class: "nav-link" %>
+    <li class="nav-item uniline">
+      <%= link_to "Operaciones", operacions_path, class: "nav-link" %>
+      <%= link_to "+", new_operacion_path, class: "nav-link" %>
     </li>
-    <li class="nav-item">
-      <%= link_to "Todas las personas", personas_path, class: "nav-link" %>
+    <li class="nav-item uniline">
+      <%= link_to "Personas", personas_path, class: "nav-link" %>
+      <%= link_to "+", new_persona_path, class: "nav-link" %>
     </li>
-    <li class="nav-item">
-      <%= link_to "Todos los coches", cars_path, class: "nav-link" %>
+    <li class="nav-item uniline">
+      <%= link_to "Coches", cars_path, class: "nav-link" %>
+      <%= link_to "+", new_car_path, class: "nav-link" %>
     </li>
-    <li class="nav-item">
-      <%= link_to "Todas las ventas", sales_path, class: "nav-link" %>
+    <li class="nav-item uniline">
+      <%= link_to "Ventas", sales_path, class: "nav-link" %>
+      <%= link_to "+", new_sale_path, class: "nav-link" %>
     </li>
-    <li class="nav-item">
-      <%= link_to "Todos los cobros", cobros_path, class: "nav-link" %>
+    <li class="nav-item uniline">
+      <%= link_to "Cobros", cobros_path, class: "nav-link" %>
+      <%= link_to "+", new_cobro_path, class: "nav-link" %>
     </li>
-    <li class="nav-item">
-      <%= link_to "Todas las compras", compras_path, class: "nav-link" %>
+    <li class="nav-item uniline">
+      <%= link_to "Compras", compras_path, class: "nav-link" %>
+      <%= link_to "+", new_compra_path, class: "nav-link" %>
     </li>
-    <li class="nav-item">
-      <%= link_to "Todos los pagos", pagos_path, class: "nav-link" %>
+    <li class="nav-item uniline">
+      <%= link_to "Pagos", pagos_path, class: "nav-link" %>
+      <%= link_to "+", new_pago_path, class: "nav-link" %>
     </li>
   <% else %>
-    <li class="nav-item">
+    <li class="sidebar-heading">
       <%= link_to "Login", new_user_session_path, class: "nav-link" %>
     </li>
   <% end %>

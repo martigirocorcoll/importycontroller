@@ -12,6 +12,7 @@
     <tr>
       <th><%= sort_link(@q, :id, 'Compra', default_order: :desc) %></th>
       <th><%= sort_link(@q, :fecha, 'Fecha', default_order: :desc) %></th>
+      <th>Completo</th>
       <th><%= sort_link(@q, :tipo, 'Tipo', default_order: :desc) %></th>
       <th><%= sort_link(@q, :categoria, 'Descripcion', default_order: :desc) %></th>
       <th><%= sort_link(@q, :precio, 'Precio', default_order: :desc) %></th>
@@ -29,6 +30,11 @@
       <tr>
         <td><%= link_to "Nº #{compra.id}", compra %></td>
         <td><%= compra.fecha.strftime('%d-%m-%Y') %></td>
+        <% if compra.completo == "Completo" || compra.completo == "Bompleto" %>
+          <td class = "green-bk"><%= compra.completo %></td>
+        <% else %>
+          <td class = "red-bk"><%= compra.completo %></td>
+        <% end %>
         <td><%= compra.tipo %></td>
         <td><%= compra.categoria %></td>
         <td><%= compra.precio %>€</td>

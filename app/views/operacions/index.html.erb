@@ -12,7 +12,9 @@
 <table class = "table table-hover">
   <thead>
     <tr>
-      <th><%= sort_link(@q, :id, 'Operacion', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :id, 'Nº', default_order: :desc) %></th>
+      <th><%= sort_link(@q, :comptabilitzat, 'Comp', default_order: :desc) %></th>
+      <th>Fecha</th>
       <th><%= sort_link(@q, :titol, 'Operacion', default_order: :desc) %></th>
       <th><%= sort_link(@q, :venedor, 'Comercial', default_order: :desc) %></th>
       <th><%= sort_link(@q, :estado, 'Estado', default_order: :desc) %></th>
@@ -27,9 +29,15 @@
     <% @operacions.each do |operacion| %>
       <tr>
         <td><%= link_to operacion.id, operacion %></td>
+        <% if operacion.comptabilitzat == true %>
+        <td class = "green-bk"> <%= operacion.esquema %></td>
+        <% else %>
+        <td><%= operacion.esquema %></td>
+        <% end %>
+        <td><%= operacion.fecha %></td>
         <td><%= link_to operacion.titol, operacion %></td>
         <td><%= operacion.venedor %></td>
-        <td><%= operacion.estado %></td>
+        <td><%= Operacion::ESTAT[operacion.estado.to_i][0] %></td>
         <th><%= operacion.margen_neto_iva_si_resta %>€</th>
         <th><%= operacion.iva_iva_si_resta %>€</th>
         <% if operacion.pendiente < 0 %>
@@ -43,6 +51,40 @@
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+      <tr>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Total</td>
+        <td>-</td>
+        <td>-</td>
+        <% margen_total = 0 %>
+        <% @operacions.each do |operacion| %>
+          <% margen_total += operacion.margen_neto_iva_si_resta %>
+        <% end %>
+        <th><%= margen_total %>€</th>
+
+        <% iva_total = 0 %>
+        <% @operacions.each do |operacion| %>
+          <% iva_total += operacion.iva_iva_si_resta %>
+        <% end %>
+        <th><%= iva_total %>€</th>
+
+        <% pendiente_total = 0 %>
+        <% @operacions.each do |operacion| %>
+          <% pendiente_total += operacion.pendiente %>
+        <% end %>
+        <% if pendiente_total < 0 %>
+        <th class = "rouge"><%= pendiente_total %>€</th>
+        <% elsif pendiente_total > 0 %>
+          <th class = "verd"><%= pendiente_total %>€</th>
+        <% else %>
+          <th class = "black"><%= pendiente_total %>€</th>
+        <% end %>
+        <td>-</td>
+      </tr>
+  </tfoot>
 </table>
 
 <br>
