@@ -9,6 +9,8 @@
 <%= render 'form_ransack', cobro: @cobro %>
 </div>
 
+<%= column_chart @cobros.where(fecha_efectiva: nil).group_by_day(:fecha_teorica).sum(:cantidad) %>
+
 
 <table class = "table table-hover">
   <thead>
