@@ -39,6 +39,8 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary'
 gem 'bootstrap'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem "chartkick"
+gem "groupdate"
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

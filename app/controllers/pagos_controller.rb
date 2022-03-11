@@ -5,6 +5,37 @@ class PagosController < ApplicationController
   def index
     @q = Pago.ransack(params[:q])
     @pagos = @q.result(distinct: true)
+
+
+    # pagos_test = []
+    # Pago.where(fecha_efectiva: nil).order(:fecha_teorica).each do |pago|
+    #   fechas_pago = pagos_test.map {|x| x[0] }
+    #   if fechas_pago.include?(pago.fecha_teorica)
+    #     i = fechas_pago.index(pago.fecha_teorica)
+    #     pagos_test[i][1] -= pago.cantidad
+    #   else
+    #     pagos_test << [pago.fecha_teorica, - pago.cantidad]
+    #   end
+    # end
+    # @pago_hash = pagos_test
+
+    # cobros_test = []
+    # Cobro.where(fecha_efectiva: nil).order(:fecha_teorica).each do |cobro|
+    #   fechas_cobro = cobros_test.map {|x| x[0] }
+    #   if fechas_cobro.include?(cobro.fecha_teorica)
+    #     i = fechas_cobro.index(cobro.fecha_teorica)
+    #     cobros_test[i][1] += cobro.cantidad
+    #   else
+    #     cobros_test << [cobro.fecha_teorica, cobro.cantidad]
+    #   end
+    # end
+    # @cobro_hash = cobros_test
+
+    # @data = [
+    #   {name: "Cobros", data: @cobro_hash},
+    #   {name: "Pagos", data: @pago_hash}
+    # ]
+
   end
 
   # GET /pagos/1 or /pagos/1.json
