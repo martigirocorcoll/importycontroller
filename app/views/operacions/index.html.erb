@@ -9,8 +9,7 @@
   <%= render 'form_ransack', operacion: @operacion %>
 </div>
 
-<%= @arrays %>
-<%= column_chart(@data) %>
+<%= column_chart @data, legend: false, stacked: true, suffix: "€", thousands: "." , download: true, height: "500px" %>
 
 <table class = "table table-hover">
   <thead>
