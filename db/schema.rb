@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_08_233600) do
+ActiveRecord::Schema.define(version: 2022_03_15_103651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2022_03_08_233600) do
     t.string "chasis"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "matricula"
+    t.string "matriculanum"
   end
 
   create_table "cobros", force: :cascade do |t|
@@ -68,6 +70,7 @@ ActiveRecord::Schema.define(version: 2022_03_08_233600) do
     t.bigint "operacion_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "modificar"
     t.index ["car_id"], name: "index_compras_on_car_id"
     t.index ["operacion_id"], name: "index_compras_on_operacion_id"
     t.index ["persona_id"], name: "index_compras_on_persona_id"

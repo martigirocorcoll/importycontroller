@@ -19,8 +19,8 @@
       <th><%= sort_link(@q, :iva, 'Iva', default_order: :desc) %></th>
       <th>Persona</th>
       <th>Car</th>
+      <th><%= sort_link(@q, :modificar, 'Modificar', default_order: :desc) %></th>
       <th>Pendiente</th>
-
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -41,6 +41,7 @@
         <td><%= compra.iva.to_i * 100%>%</td>
         <td><%= link_to "#{compra.persona.nombre + " " + compra.persona.apellido}", compra.persona, :style=> "color: black;"  %></td>
         <td><%= link_to "#{compra.car.marca + " " + compra.car.modelo}", compra.car, :style=> "color: black;" %></td>
+        <td><%= compra.modificar%></td>
         <% if compra.pendiente_pago > 0%>
           <td class = "rouge"><%= compra.pendiente_pago %> €</td>
         <% elsif compra.pendiente_pago < 0 %>
