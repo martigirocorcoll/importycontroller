@@ -84,6 +84,11 @@
         <strong>Comercial:</strong>
         <%= @operacion.venedor %>
       </p>
+
+      <h2>
+        <strong>Margen total:</strong>
+        <%= @operacion.margen_total %>€
+      </h2>
 </div>
 
 <table class = "table table-hover">
@@ -144,7 +149,7 @@
       <th>-</th>
       <th>-</th>
       <th>-</th>
-      <th>-</th>
+      <th><%= @operacion.margen_cash%>€</th>
       <th><%= @operacion.margen_neto_iva_si_resta %>€</th>
       <th><%= @operacion.iva_iva_si_resta %>€</th>
       <th>-</th>

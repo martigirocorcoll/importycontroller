@@ -43,6 +43,25 @@ class Operacion < ApplicationRecord
     return pcobro - ppago
   end
 
+  def margen_cash
+    margen = 0
+    self.sales.each do |venta|
+      venta.cobros.each do |cobro|
+        if cobro.tipo == "cash"
+          margen += cobro.cantidad.to_i
+        end
+      end
+    end
+    self.compras.each do |compra|
+      compra.pagos.each do |pago|
+        if pago.tipo == "cash"
+          margen -= pago.cantidad.to_i
+        end
+      end
+    end
+    return margen
+  end
+
 
   #FUNCIONAmodel que en cas de operacio rebu, l'iva dels gastos computa al restar marge de la operacio
   def margen_neto_iva_si_resta
@@ -73,6 +92,11 @@ class Operacion < ApplicationRecord
       end
       return ((ingreso - gastos)/ 1.21).to_i
     end
+  end
+
+
+  def margen_total
+    self.margen_neto_iva_si_resta + self.margen_cash
   end
 
   def iva_iva_si_resta
