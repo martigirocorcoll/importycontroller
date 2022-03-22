@@ -151,7 +151,7 @@
 <div style="border-bottom: 1px solid gray; font-family: Arial, Helvetica, sans-serif; margin-top: 10px; padding-bottom: 30px; margin-bottom: 30px;">
   <table style="width:50%;">
     <tr>
-      <td><strong>Nº de pago</strong></td>
+      <td><strong>Tipo de pago</strong></td>
       <td><strong>Cantidad</strong></td>
       <td><strong>Fecha de pago</strong></td>
     </tr>
@@ -159,7 +159,11 @@
       <%unless cobro.tipo == "cash"  %>
         <tr>
           <td>
-              <%=cobro.tipo%>
+              <%if cobro.tipo == "banc"%>
+                Transferecia bancaria
+              <%elsif cobro.tipo == "coche"%>
+                Entrega de coche a cambio
+              <% end %>
           </td>
           <td>
             <%= number_to_currency(cobro.cantidad)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€
