@@ -155,11 +155,11 @@
       <td><strong>Cantidad</strong></td>
       <td><strong>Fecha de pago</strong></td>
     </tr>
-    <% @sale.cobros.each_with_index do |cobro, index| %>
+    <% @sale.cobros.each do |cobro| %>
       <%unless cobro.tipo == "cash"  %>
         <tr>
           <td>
-              <%=index + 1%>
+              <%=cobro.tipo%>
           </td>
           <td>
             <%= number_to_currency(cobro.cantidad)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€
