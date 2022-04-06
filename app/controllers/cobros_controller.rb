@@ -42,7 +42,7 @@ class CobrosController < ApplicationController
   def update
     respond_to do |format|
       if @cobro.update(cobro_params)
-        format.html { redirect_to cobro_url(@cobro), notice: "Cobro was successfully updated." }
+        format.html { redirect_to sale_path(params["cobro"]["sale_id"].to_i), notice: "Cobro was successfully updated." }
         format.json { render :show, status: :ok, location: @cobro }
       else
         format.html { render :edit, status: :unprocessable_entity }

@@ -73,7 +73,7 @@ class PagosController < ApplicationController
   def update
     respond_to do |format|
       if @pago.update(pago_params)
-        format.html { redirect_to pago_url(@pago), notice: "Pago was successfully updated." }
+        format.html { redirect_to compra_path(params["pago"]["compra_id"].to_i), notice: "Pago was successfully updated." }
         format.json { render :show, status: :ok, location: @pago }
       else
         format.html { render :edit, status: :unprocessable_entity }
