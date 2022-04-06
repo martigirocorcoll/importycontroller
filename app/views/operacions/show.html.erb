@@ -113,7 +113,7 @@
           <td><%= @operacion.sales.first.numero%></td>
           <td><%= link_to"#{@operacion.sales.first.car.marca} #{@operacion.sales.first.car.modelo}",@operacion.sales.first.car  %></td>
           <td><%= link_to"#{@operacion.sales.first.persona.nombre} #{@operacion.sales.first.persona.apellido}", @operacion.sales.first.persona %></td>
-          <% if @operacion.sales.first.iva == 0.0 %>
+          <% if @operacion.sales.first.iva < 0.1 %>
             <td><%= @operacion.sales.first.precio %>€</td>
             <td>-</td>
           <% else %>
