@@ -86,6 +86,10 @@
           <p>
             <%= number_to_currency(@sale.precio)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
           </p>
+        <% elsif @sale.iva < 0 %>
+           <p>
+            <%= number_to_currency(@sale.precio)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+          </p>
         <%else %>
             <p>
             <%= number_to_currency(@sale.precio.to_i / (1 + @sale.iva))[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€
@@ -100,6 +104,10 @@
           <p>
             <%= number_to_currency(@sale.precio)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
           </p>
+        <% elsif @sale.iva < 0 %>
+          <p>
+            <%= number_to_currency(@sale.precio)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+          </p>
         <%else %>
             <p>
             <%= number_to_currency(@sale.precio.to_i / 1.21)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€
@@ -110,6 +118,10 @@
         <%if @sale.iva == 0 %>
           <p>
             -
+          </p>
+        <%elsif @sale.iva < 0 %>
+          <p>
+            0 €
           </p>
         <%else %>
             <p>
@@ -142,15 +154,23 @@
       <h3><strong>Total:</h3>
     </td>
     <td style="text-align:right;">
+      <% unless @sale.iva < 0 %>
         <h3><%= number_to_currency(@sale.precio.to_i / (1 + @sale.iva))[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€
         </h3>
         <h3><%= number_to_currency(@sale.precio.to_i / (1 + @sale.iva) * @sale.iva)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€</h3>
         <h3><strong><%= number_to_currency(@sale.precio.to_i)[1..].gsub(",",":").gsub(".",",").gsub(":",".") %>€</strong></h3>
+      <% else %>
+      <h3><%= number_to_currency(@sale.precio)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h3>
+      <h3>0 €</h3>
+      <h3><%= number_to_currency(@sale.precio)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h3>
+      <% end %>
     </td>
     </tr>
   </table>
   <% if @sale.iva == 0 %>
     <p style = "font-style: italic; text-align: justify;">IVA INCLUIDO: acogido al régimen especial de bienes usados (REBU) provisto por el artículo 26bis de la directiva 77/38/CEE</p>
+  <% elsif @sale.iva < 0 %>
+    <p style = "font-style: italic; text-align: justify;">“Entrega intracomunitaria exenta por aplicación del art. 25 Uno de la Ley 37/1992 del IVA y el art. 6.1.j del Real Decreto 1619/2012 de 30 de noviembre”. </p>
   <% end %>
 </div>
 

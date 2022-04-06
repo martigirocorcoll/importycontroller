@@ -48,6 +48,8 @@
       </div>
       <% if @sale.iva == 0.0 %>
         <p><strong>Precio:</strong> <%= @sale.precio %>€ </p>
+      <% elsif @sale.iva < 0 %>
+        <p><strong>Precio exportación:</strong> <%= @sale.precio %>€ </p>
       <% else %>
         <p><strong>Precio:</strong> <%= (@sale.precio / (1+ @sale.iva)).to_i %>€ + <%= (@sale.iva * 100).to_i %>% = <strong><%= @sale.precio %>€</strong> </p>
       <% end %>

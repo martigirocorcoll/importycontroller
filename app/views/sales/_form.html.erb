@@ -5,12 +5,13 @@
 
   <div class="form-inputs form-group">
     <%= f.input :precio, required: true %>
-    <%= f.input :iva, required: true ,as: :radio_buttons,
+    <%= f.input :iva, required: true ,
+        as: :radio_buttons,
         collection_wrapper_tag: 'div',
         collection_wrapper_class: 'category-wrapper',
         item_wrapper_class: 'category-item',
         input_html: {class: 'category-selector'},
-        collection: [["REBU", 0.0],["DEDUCIBLE", 0.21]] %>
+        collection: [["REBU", 0.0],["DEDUCIBLE", 0.21], ["EXPORT", -1]] %>
     <%= f.input :fecha, html5: true, required: true %>
     <%= f.association :persona,
      collection: Persona.all.map{|persona| ["#{persona.id}- #{persona.nombre} #{persona.apellido}", persona.id]},
