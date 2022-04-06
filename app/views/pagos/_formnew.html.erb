@@ -1,24 +1,50 @@
+<% if params["compra_id"]== nil %>
+  <%= simple_form_for(@pago) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-<%= simple_form_for(@pago) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <%= f.input :cantidad, required: true %>
+      <%= f.input :fecha_teorica, html5: true, required: true %>
+      <%= f.association :compra,
+      collection: Compra.all.map{|compra| ["#{compra.id}) " + compra.car.marca + " " + compra.car.modelo + " - " + compra.precio.to_s + "€", compra.id]},
+      input_html: { class: 'select2' } %>
+      <%= f.input :tipo, required: true ,as: :radio_buttons,
+          collection_wrapper_tag: 'div',
+          collection_wrapper_class: 'category-wrapper',
+          item_wrapper_class: 'category-item',
+          input_html: {class: 'category-selector'},
+          collection: ["banc", "cash", "coche"] %>
+      <%= f.input :justificante, as: :file %>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :cantidad, required: true %>
-    <%= f.input :fecha_teorica, html5: true, required: true %>
-    <%= f.association :compra,
-    collection: Compra.all.map{|compra| ["#{compra.id}) " + compra.car.marca + " " + compra.car.modelo + " - " + compra.precio.to_s + "€", compra.id]},
-    input_html: { class: 'select2' } %>
-    <%= f.input :tipo, required: true ,as: :radio_buttons,
-        collection_wrapper_tag: 'div',
-        collection_wrapper_class: 'category-wrapper',
-        item_wrapper_class: 'category-item',
-        input_html: {class: 'category-selector'},
-        collection: ["banc", "cash", "coche"] %>
-    <%= f.input :justificante, as: :file %>
-  </div>
+    <div class="form-actions text-center mb-3">
+      <%= f.button :submit, class: "btn btn-primary text-center" %>
+    </div>
+  <% end %>
+<% else %>
+  <h2 style="text-align: center"><%= "#{@compra.id} - #{@compra.car.marca}  #{@compra.car.modelo} - #{@compra.precio}" %></h2>
+  <%= simple_form_for(@pago) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-actions text-center mb-3">
-    <%= f.button :submit, class: "btn btn-primary text-center" %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :cantidad, required: true %>
+      <%= f.input :fecha_teorica, html5: true, required: true %>
+      <%= f.association :compra,
+      collection: Compra.all.map{|compra| ["#{compra.id}) " + compra.car.marca + " " + compra.car.modelo + " - " + compra.precio.to_s + "€", compra.id]},
+      selected: @compra.id %>
+      <%= f.input :tipo, required: true ,as: :radio_buttons,
+          collection_wrapper_tag: 'div',
+          collection_wrapper_class: 'category-wrapper',
+          item_wrapper_class: 'category-item',
+          input_html: {class: 'category-selector'},
+          collection: ["banc", "cash", "coche"] %>
+      <%= f.input :justificante, as: :file %>
+    </div>
+
+    <div class="form-actions text-center mb-3">
+      <%= f.button :submit, class: "btn btn-primary text-center" %>
+    </div>
+  <% end %>
 <% end %>

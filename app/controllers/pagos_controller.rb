@@ -45,6 +45,9 @@ class PagosController < ApplicationController
   # GET /pagos/new
   def new
     @pago = Pago.new
+    unless params[:compra_id] == nil
+      @compra = Compra.find(params["compra_id"])
+    end
   end
 
   # GET /pagos/1/edit

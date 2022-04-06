@@ -92,7 +92,7 @@
         <% else %>
           <h3 class = "text-center"> Pendiente: <%= @compra.pendiente_pago%>€</h3>
         <% end %>
-          <%= link_to " + ", new_pago_path, :class => "añadido" %>
+          <%= link_to " + ", new_pago_path(:compra_id => @compra.id ), :class => "añadido" %>
       </div>
       <table class = "table mt-4">
         <tr>
