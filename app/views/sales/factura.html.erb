@@ -208,6 +208,10 @@
 </div>
 <div style="font-family: Arial, Helvetica, sans-serif; text-align: center;">
   <p>Pagar por transferencia bancaria al siguiente número de cuenta:<p>
+  <% if @sale.marti == true %>
+  <p>IBAN: ES66 0019 0042 2740 1003 1074 | BIC: DEUTESBBXXX<p>
+  <% else %>
   <p>IBAN: ES57 2100 0801 1302 0108 6618 | BIC: CAIXESBBXXX<p>
+  <% end %>
   <p>La información contenida en esta comunicación es confidencial. Esta comunicación tiene el único propósito de su uso por el individuo o entidad designado como receptor. Si el lector de esta comunicación no es el receptor designado, se le notifica por la presente que cualquier divulgación, distribución o copia de esta información está estrictamente prohibida.<p>
 </div>
