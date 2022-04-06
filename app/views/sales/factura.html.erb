@@ -5,9 +5,15 @@
         <%= image_tag image_url("logo.png") %>
       </td>
       <td>
-        <p style="text-align:right; font-family: Arial, Helvetica, sans-serif;">Importy Garage S.L. - B42731406</p>
+      <% if @sale.marti == true %>
+        <p style="text-align:right; font-family: Arial, Helvetica, sans-serif;">Martí Giró Corcoll - ES41559928d</p>
+        <p style="text-align:right; font-family: Arial, Helvetica, sans-serif;">Pg. Joan de Borbó 103 L11</p>
+        <p style="text-align:right; font-family: Arial, Helvetica, sans-serif;">Barcelona 08039</p>
+      <% else %>
+         <p style="text-align:right; font-family: Arial, Helvetica, sans-serif;">Importy Garage S.L. - B42731406</p>
         <p style="text-align:right; font-family: Arial, Helvetica, sans-serif;">Av. Mas Mates 19</p>
         <p style="text-align:right; font-family: Arial, Helvetica, sans-serif;">Roses 17480</p>
+      <% end %>
       </td>
     </tr>
   </table>

@@ -82,6 +82,17 @@
 
     <div class = "sale-card">
       <div class = "d-flex justify-content-between align-items-baseline">
+        <h3><strong>Vendedor</strong></h3>
+      </div>
+      <% if @sale.marti == true %>
+        <p><strong>Nombre:</strong> Marti </p>
+      <% else %>
+       <p><strong>Nombre:</strong> Importy Garage SL </p>
+      <% end %>
+    </div>
+
+    <div class = "sale-card">
+      <div class = "d-flex justify-content-between align-items-baseline">
         <h3><strong>Operación</strong></h3>
         <%= link_to @sale.operacion do%>
           Abrir

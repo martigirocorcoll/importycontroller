@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_15_103651) do
+ActiveRecord::Schema.define(version: 2022_04_06_143732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(version: 2022_03_15_103651) do
     t.string "coche_cambio_km"
     t.string "coche_cambio_matricula"
     t.string "coche_cambio_ano"
+    t.boolean "marti"
     t.index ["car_id"], name: "index_sales_on_car_id"
     t.index ["operacion_id"], name: "index_sales_on_operacion_id"
     t.index ["persona_id"], name: "index_sales_on_persona_id"
