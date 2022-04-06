@@ -46,7 +46,7 @@ class PagosController < ApplicationController
   def new
     @pago = Pago.new
     unless params[:compra_id] == nil
-      @compra = Compra.find(params["compra_id"])
+    @compra = Compra.find(params["compra_id"])
     end
   end
 
@@ -60,7 +60,7 @@ class PagosController < ApplicationController
 
     respond_to do |format|
       if @pago.save
-        format.html { redirect_to pago_url(@pago), notice: "Pago was successfully created." }
+        format.html { redirect_to compra_path(params["pago"]["compra_id"].to_i), notice: "Pago was successfully created." }
         format.json { render :show, status: :created, location: @pago }
       else
         format.html { render :new, status: :unprocessable_entity }

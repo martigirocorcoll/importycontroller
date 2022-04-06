@@ -14,6 +14,9 @@ class CobrosController < ApplicationController
   # GET /cobros/new
   def new
     @cobro = Cobro.new
+    unless params[:sale_id] == nil
+      @sale = Sale.find(params["sale_id"])
+    end
   end
 
   # GET /cobros/1/edit
@@ -26,7 +29,7 @@ class CobrosController < ApplicationController
 
     respond_to do |format|
       if @cobro.save
-        format.html { redirect_to cobro_url(@cobro), notice: "Cobro was successfully created." }
+        format.html { redirect_to sale_path(params["cobro"]["sale_id"].to_i), notice: "Cobro was successfully created." }
         format.json { render :show, status: :created, location: @cobro }
       else
         format.html { render :new, status: :unprocessable_entity }
