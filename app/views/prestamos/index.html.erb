@@ -10,6 +10,8 @@
       <th>Fecha</th>
       <th>Cantidad</th>
       <th>Interés</th>
+      <th>Declarado</th>
+      <th>Finalizado</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +22,8 @@
         <td><%= link_to prestamo.fecha, prestamo %></td>
         <td><%= prestamo.cantidad %>€</td>
         <td><%= prestamo.interes %>%</td>
+        <td><%= prestamo.declarado %></td>
+        <td><%= prestamo.devuelto %></td>
         <td><%= link_to 'x', prestamo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

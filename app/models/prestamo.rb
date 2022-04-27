@@ -6,4 +6,28 @@ class Prestamo < ApplicationRecord
   has_one_attached :diligencia
   has_many :flujos, dependent: :destroy
 
+  def declarado
+    if self.contrato.attached? && self.modelo.attached? && self.diligencia.attached?
+      return "Si"
+    elsif self.contrato.attached? || self.modelo.attached? || self.diligencia.attached?
+      return "Solo algo"
+    else
+      return "No"
+    end
+  end
+
+  def devuelto
+    suma = 0
+    self.flujos.each do |flujo|
+      unless flujo.fecha_efectiva == nil
+        suma += flujo.cantidad.to_i
+      end
+    end
+    if suma < 0
+      return "Si"
+    else
+      return "No"
+    end
+  end
+
 end

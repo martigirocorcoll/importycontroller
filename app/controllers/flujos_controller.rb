@@ -22,10 +22,10 @@ class FlujosController < ApplicationController
   # POST /flujos or /flujos.json
   def create
     @flujo = Flujo.new(flujo_params)
-
     respond_to do |format|
       if @flujo.save
-        format.html { redirect_to flujo_url(@flujo), notice: "Flujo was successfully created." }
+        format.html { redirect_to prestamo_path(params["flujo"]["prestamo_id"].to_i), notice: "Flujo was successfully created." }
+        # format.html { redirect_to flujo_url(@flujo), notice: "Flujo was successfully created." }
         format.json { render :show, status: :created, location: @flujo }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,8 @@ class FlujosController < ApplicationController
   def update
     respond_to do |format|
       if @flujo.update(flujo_params)
-        format.html { redirect_to flujo_url(@flujo), notice: "Flujo was successfully updated." }
+        # format.html { redirect_to pretamo_path(params["flujo"]["prestamo_id"].to_i)
+        format.html { redirect_to prestamo_path(params["flujo"]["prestamo_id"].to_i), notice: "Flujo was successfully created." }
         format.json { render :show, status: :ok, location: @flujo }
       else
         format.html { render :edit, status: :unprocessable_entity }
