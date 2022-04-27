@@ -23,7 +23,7 @@ class Prestamo < ApplicationRecord
         suma += flujo.cantidad.to_i
       end
     end
-    if suma < 0
+    if suma >= self.cantidad.to_i
       return "Si"
     else
       return "No"
