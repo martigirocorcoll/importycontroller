@@ -41,6 +41,7 @@ gem 'bootstrap'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem "chartkick"
 gem "groupdate"
+gem "humanize"
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
