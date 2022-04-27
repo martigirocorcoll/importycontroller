@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_06_143732) do
+ActiveRecord::Schema.define(version: 2022_04_26_111945) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,16 @@ ActiveRecord::Schema.define(version: 2022_04_06_143732) do
     t.index ["persona_id"], name: "index_compras_on_persona_id"
   end
 
+  create_table "flujos", force: :cascade do |t|
+    t.decimal "cantidad"
+    t.date "fecha_teorica"
+    t.date "fecha_efectiva"
+    t.bigint "prestamo_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["prestamo_id"], name: "index_flujos_on_prestamo_id"
+  end
+
   create_table "operacions", force: :cascade do |t|
     t.string "estado"
     t.string "comercial"
@@ -109,6 +119,18 @@ ActiveRecord::Schema.define(version: 2022_04_06_143732) do
     t.string "cif"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "prestamos", force: :cascade do |t|
+    t.date "fecha"
+    t.string "cantidad"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "prestamista_id"
+    t.bigint "prestatario_id"
+    t.integer "interes"
+    t.index ["prestamista_id"], name: "index_prestamos_on_prestamista_id"
+    t.index ["prestatario_id"], name: "index_prestamos_on_prestatario_id"
   end
 
   create_table "sales", force: :cascade do |t|
@@ -150,7 +172,10 @@ ActiveRecord::Schema.define(version: 2022_04_06_143732) do
   add_foreign_key "compras", "cars"
   add_foreign_key "compras", "operacions"
   add_foreign_key "compras", "personas"
+  add_foreign_key "flujos", "prestamos"
   add_foreign_key "pagos", "compras"
+  add_foreign_key "prestamos", "personas", column: "prestamista_id"
+  add_foreign_key "prestamos", "personas", column: "prestatario_id"
   add_foreign_key "sales", "cars"
   add_foreign_key "sales", "operacions"
   add_foreign_key "sales", "personas"

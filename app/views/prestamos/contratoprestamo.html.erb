@@ -1,0 +1,82 @@
+<div style="width:100%; font-family: Arial, Helvetica, sans-serif;">
+  <h1
+  style="text-align:center;padding-bottom:20px;">Contrato de préstamo - <%= @prestamo.cantidad %>€ - <%= @prestamo.interes %>% </h1>
+  <h3 style="text-align:right;padding-bottom:20px;"> <%="En Barcelona a, #{@prestamo.fecha.strftime("%d-%m-%Y")} "%></h3>
+  <h2 style="text-align:center;">
+  REUNIDOS
+  </h2>
+  <p>
+      De una parte, como PRESTAMISTA,
+  </p>
+  <p>
+  D./Da: <strong> <%= @prestamo.prestamista.nombre%> <%= @prestamo.prestamista.apellido%></strong>,en adelante el <strong>PRESTAMISTA</strong>, con domicilio en <%= @prestamo.prestamista.direccion%>, de la localidad de. <%= @prestamo.prestamista.ciudad%> (<%= @prestamo.prestamista.cp%>), y con Documento Nacional de Identidad número <%= @prestamo.prestamista.cif%> .
+  Interviene en el presente contrato, en su propio nombre y derecho.
+  </p>
+  <p>
+      Y de otra, como PRESTATARIA,
+  </p>
+  <p>
+  D./Da: <strong> <%= @prestamo.prestatario.nombre%> <%= @prestamo.prestatario.apellido%></strong>,en adelante el <strong>PRESTATARIO</strong>, con domicilio en <%= @prestamo.prestatario.direccion%>, de la localidad de. <%= @prestamo.prestatario.ciudad%> (<%= @prestamo.prestatario.cp%>), y con Documento Nacional de Identidad número <%= @prestamo.prestatario.cif%> .
+  Interviene en el presente contrato, en su propio nombre y derecho.
+  </p>
+  <p>
+  Ambas partes se reconocen la capacidad legal necesaria para formalizar el presente CONTRATO DE PRÉSTAMO en el concepto en el que intervienen en el mismo, y, en consecuencia,
+  </p>
+  <h2 style="text-align:center; padding-top:20px;">
+  EXPONEN
+  </h2>
+  <P>
+  I.- Que a día <%= @prestamo.fecha %> ambas partes acuerdan la realización de un préstamo. La parte prestamista acuerda dejar la cantidad de <strong><%= @prestamo.cantidad %>€</strong> a la parte prestataria con sujeción a las condiciones establecidas en dicho acuerdo de préstamo.
+  </P>
+  <P>
+  II.- Que, en virtud de lo anterior, D/Da. <%= @prestamo.prestatario.nombre%> <%= @prestamo.prestatario.apellido%>, en su condición de parte PRESTATARIA, y D./Da <%= @prestamo.prestamista.nombre%> <%= @prestamo.prestamista.apellido%>, en su calidad de PRESTAMISTA, suscriben el presente CONTRATO DE PRÉSTAMO, de conformidad con las siguientes
+  </P>
+  <h2 style="text-align:center; padding-top:20px;">CLÁUSULAS</h2>
+  <P>
+  PRIMERA.- PRÉSTAMO. El PRESTAMISTA presta a la PRESTATARIA la cantidad de  <%= @prestamo.cantidad %> euros, que se hace efectiva en este acto, mediante transferencia bancaria de la cuenta del PRESTAMISTA a la cuenta de la PRESTATARIA, sirviendo la firma del este documento como formal carta de pago y recibo de la citada cantidad.
+  </P>
+  <P>
+  SEGUNDA.- DEVOLUCIÓN DEL CAPITAL E INTERÉS. La PRESTATARIA se obliga frente al PRESTAMISTA a la devolución del capital prestado con un interés anual, pactado por las partes, equivalente a un <%= @prestamo.interes %>% anual, siendo pagadero dicho interés por periodos vencidos anualmente (mensualmente, trimestralmente, semestralmente, anualmente).
+  Asimismo, la falta de pago del importe del capital o de los intereses pactados a su vencimiento, devengará un interés de demora del  cero por ciento (0 %) anual; sin que sea necesario para ello el requerimiento previo por parte del PRESTAMISTA.
+  </P>
+  <P>
+  TERCERA.- PLAZO DE DEVOLUCIÓN. El capital prestado deberá devolverse como máximo en el plazo de 1 año a contar desde el día de de la firma del presente contrato, es decir, como máximo durante todo el <%= (@prestamo.fecha + 365).strftime("%d-%m-%Y")%>.
+  </P>
+  <P>
+  CUARTA.- DEVOLUCIÓN ANTICIPADA DEL PRÉSTAMO. La PRESTATARIA podrá devolver de forma anticipada, total o parcialmente (puede pactarse también que las cantidades entregadas de forma anticipada no sean inferiores a determinada cantidad o a determinado porcentaje del capital prestado), el principal prestado más los intereses respectivos calculados hasta la fecha en que se realice la entrega anticipada, documentándose por medio de recibos anexos al presente documento las cantidades objeto de entrega anticipada y las cantidades que queden pendientes en concepto de principal y de intereses exigibles hasta la fecha de vencimiento pactada. (O, en su caso, "La PRESTATARIA no podrá realizar, ni obligar al PRESTAMISTA a aceptar, pagos parciales a cuenta del total del capital prestado con
+  anterioridad a la fecha del vencimiento del presente contrato de préstamo").
+  </P>
+  <P>
+  QUINTA.- PRÓRROGA DEL CONTRATO. Las partes, de común acuerdo, podrán pactar una prórroga al presente contrato en caso de que llegado el vencimiento, la deuda no se haya reintegrado.
+  </P>
+  <P>
+  SEXTA.- GASTOS. Todos los gastos e impuestos que se deriven de la formalización del presente contrato, serán a cargo de la PRESTATARIA, con entera indemnidad para el PRESTAMISTA.
+  </P>
+  <P>
+  SÉPTIMA.- INCUMPLIMIENTO Y RESOLUCIÓN DEL CONTRATO. El incumplimiento por parte de la PRESTATARIA de cualquiera de las obligaciones contraídas en virtud del presente contrato facultará al PRESTAMISTA para resolver el contrato antes del plazo de vencimiento pactado, siempre que medie requerimiento previo al PRESTATARIO del cumplimiento de sus obligaciones. Transcurridos 30 días desde el citado requerimiento sin que aquél atendiere el contenido del mismo, quedará resuelto de pleno derecho el presente contrato; con las consecuencias jurídicas a que hubiere lugar legalmente.
+  </P>
+  <P>
+  OCTAVA.- DOMICILIO DE NOTIFICACIONES. A los efectos de recibir cualquier notificación relacionada con los derechos y obligaciones derivados de este contrato, las partes designan como domicilios los que figuran al encabezamiento de este documento.
+  </P>
+  <P>
+  NOVENA.- LEGISLACIÓN APLICABLE. La interpretación de las cláusulas del presente contrato se realizará de conformidad con la legislación española.
+  En consecuencia, el presente contrato se rige, en lo no pactado expresamente en él, por lo dispuesto en el Código de Comercio, las leyes especiales que lo regulen, los usos mercantiles y el Código Civil.
+  </P>
+  <P>
+  DÉCIMA.- FUERO. Las partes, con expresa renuncia al fuero propio que pudiera corresponderles, deciden someter cuantas divergencias pudieran surgir por motivo de la interpretación y cumplimiento de este contrato, a la Jurisdicción de los Jueces y Tribunales de Barcelona.
+  </P>
+  <P>
+  Y en prueba de conformidad, firman ambas partes el presente contrato, por duplicado ejemplar, en todas sus hojas y a un solo efecto, en el lugar y fecha indicados al principio de este documento.
+  </P>
+</div>
+
+<table style="width:100%; font-family: Arial, Helvetica, sans-serif; padding-top:40px;">
+  <tr>
+    <td>
+      <h3 style="text-align:center;">Fdo.:LA PARTE PRESTAMISTA.</h3>
+    </td>
+    <td>
+      <h3 style="text-align:center;">Fdo.: LA PARTE PRESTATARIA.</h3>
+    </td>
+  </tr>
+</table>

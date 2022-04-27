@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @flujo.cantidad %>
+</p>
+
+<p>
+  <strong>Fecha teorica:</strong>
+  <%= @flujo.fecha_teorica %>
+</p>
+
+<p>
+  <strong>Fecha efectiva:</strong>
+  <%= @flujo.fecha_efectiva %>
+</p>
+
+<p>
+  <strong>Prestamo:</strong>
+  <%= @flujo.prestamo_id %>
+</p>
+
+<%= link_to 'Edit', edit_flujo_path(@flujo) %> |
+<%= link_to 'Back', flujos_path %>

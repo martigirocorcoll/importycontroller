@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Flujos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cantidad</th>
+      <th>Fecha teorica</th>
+      <th>Fecha efectiva</th>
+      <th>Prestamo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flujos.each do |flujo| %>
+      <tr>
+        <td><%= flujo.cantidad %></td>
+        <td><%= flujo.fecha_teorica %></td>
+        <td><%= flujo.fecha_efectiva %></td>
+        <td><%= flujo.prestamo_id %></td>
+        <td><%= link_to 'Show', flujo %></td>
+        <td><%= link_to 'Edit', edit_flujo_path(flujo) %></td>
+        <td><%= link_to 'Destroy', flujo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Flujo', new_flujo_path %>

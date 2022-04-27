@@ -1,0 +1,24 @@
+
+<%= simple_form_for(@prestamo) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :fecha,  html5: true %>
+    <%= f.input :cantidad %>
+    <%= f.input :interes %>
+    <%= f.association :prestamista,
+     collection: Persona.all.map{|persona| ["#{persona.id}- #{persona.nombre} #{persona.apellido}", persona.id]},
+     input_html: { class: 'select2' } %>
+    <%= f.association :prestatario,
+     collection: Persona.all.map{|persona| ["#{persona.id}- #{persona.nombre} #{persona.apellido}", persona.id]},
+     input_html: { class: 'select2' } %>
+  </div>
+
+  <%= f.input :contrato, as: :file %>
+  <%= f.input :modelo, as: :file %>
+  <%= f.input :diligencia, as: :file %>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
