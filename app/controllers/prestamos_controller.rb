@@ -16,8 +16,7 @@ class PrestamosController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "contrato-prestamo", template: "prestamos/contratoprestamo.html.erb", encoding: 'utf8',
-        header: { font_name: "Arial"}
+        render pdf: "contrato-prestamo", template: "prestamos/contratoprestamo.html.erb", encoding: 'utf8'
       end
     end
   end

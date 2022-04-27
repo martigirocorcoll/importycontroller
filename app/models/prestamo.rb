@@ -6,6 +6,4 @@ class Prestamo < ApplicationRecord
   has_one_attached :diligencia
   has_many :flujos, dependent: :destroy
 
-
-
 end
