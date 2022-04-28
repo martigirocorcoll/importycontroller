@@ -41,12 +41,17 @@
 
       <p>
         <strong>Cantidad:</strong>
-        <%= @prestamo.cantidad %>
+        <%= @prestamo.cantidad %>€
       </p>
 
       <p>
         <strong>Interes:</strong>
-        <%= @prestamo.interes %>
+        <%= @prestamo.interes %>%
+      </p>
+
+       <p>
+        <strong>Intereses:</strong>
+        <%= @prestamo.interesnominal %>€
       </p>
 
       <p>
@@ -65,11 +70,12 @@
     <%# <div class = "sale-card"> %>
       <div class = "sale-card1">
         <div class = "d-flex justify-content-between">
-          <%# <% if @sale.pendiente_cobro == 0 %> %>
+        <h3><%= @prestamo.total_bruto %>€ - A retener: <%= @prestamo.retencion %> </h3>
+          <%# <% if @sale.pendiente_cobro == 0 %>
             <%# <h3 class = "text-center green"> Pagado</h3> %>
-          <%# <% else %> %>
-            <%# <h3 class = "text-center"> Pendiente: <%= @sale.pendiente_cobro%>€</h3> %>
-          <%# <% end %> %>
+          <%# <% else %>
+            <%# <h3 class = "text-center"> Pendiente: <%= @sale.pendiente_cobro%>
+          <%# <% end %>
           <%= link_to " + ", new_flujo_path(:prestamo_id => @prestamo.id), :class => "añadido" %>
         </div>
         <table class = "table mt-4">
@@ -92,6 +98,7 @@
           </tr>
           <% end %>
         </table>
+        <h3>Pendiente: <%= @prestamo.pendiente %> </h3>
       </div>
     <%# </div> %>
 
