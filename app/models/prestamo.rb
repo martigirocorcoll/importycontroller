@@ -65,4 +65,13 @@ class Prestamo < ApplicationRecord
     suma += self.interesnominal
     suma += -self.retencion
   end
+
+  def self.deuda
+    deuda = 0
+    Prestamo.all.each do |prestamo|
+      deuda += prestamo.pendiente
+    end
+    return "#{deuda}€"
+  end
+
 end
