@@ -66,10 +66,22 @@ class Prestamo < ApplicationRecord
     suma += -self.retencion
   end
 
-  def self.deuda
+  def self.deuda_importy
     deuda = 0
     Prestamo.all.each do |prestamo|
-      deuda += prestamo.pendiente
+      if prestamo.prestatario.id == 101
+        deuda += prestamo.pendiente
+      end
+    end
+    return "#{deuda}€"
+  end
+
+  def self.deuda_marti
+    deuda_ = 0
+    Prestamo.all.each do |prestamo|
+      if prestamo.prestatario.id == 101
+        deuda += prestamo.pendiente
+      end
     end
     return "#{deuda}€"
   end
