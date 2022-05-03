@@ -1,7 +1,8 @@
 <%= search_form_for @q do |f| %>
 
 
-  <%= f.search_field :fecha, placeholder: "Busca una fecha "%>
-
+  <%= f.date_select :fecha_gteq, {:include_blank => true, :default => nil} %>
+  <%= f.label :fecha_lteq, 'Hasta:' %>
+  <%= f.date_select :fecha_lteq, {:include_blank => true, :default => nil}%>
   <%= f.submit 'Filtrar', :class => "btn btn-secondary" %>
 <% end %>

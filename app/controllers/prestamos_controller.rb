@@ -3,7 +3,8 @@ class PrestamosController < ApplicationController
 
   # GET /prestamos or /prestamos.json
   def index
-    @prestamos = Prestamo.all
+    @q = Prestamo.ransack(params[:q])
+    @prestamos = @q.result(distinct: true)
   end
 
   # GET /prestamos/1 or /prestamos/1.json
