@@ -68,7 +68,7 @@ class Prestamo < ApplicationRecord
 
   def self.deuda_importy
     deuda = 0
-    Prestamo.all.each do |prestamo|
+    Prestamo.where(prestatario: 100).each do |prestamo|
       if prestamo.prestatario.id == 101
         deuda += prestamo.pendiente
       end
@@ -79,7 +79,7 @@ class Prestamo < ApplicationRecord
   def self.deuda_marti
     deuda = 0
     Prestamo.all.each do |prestamo|
-      if prestamo.prestatario.id == 101
+      if prestamo.prestatario == Persona.find_by_id(101)
         deuda += prestamo.pendiente
       end
     end
