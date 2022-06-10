@@ -5,7 +5,7 @@ class Operacion < ApplicationRecord
   has_many :cobros, through: :sales
   has_many :cars, through: :sales
 
-  ESTAT = [["0 - Operación creada", 0],["1 - Reserva recibida", 1],["2 - Coche reservado", 2],["3 - 2º Pago recibido", 3],["4 - Exportador recibe el dinero", 4],["5 - Exportador recibe el coche", 5],["6 - Coche cargado en Alemania", 6],["7 - Coche descargado a Barcelona", 7],["8- ITV pasada", 8],["9 - Expediente entrado a la gestoría", 9],["10 - Coche matriculado", 10],["11 - Entrega del coche", 11],["12 - Papeles y garantía enviados", 12],["13 - Importación finalizada", 13]]
+  ESTAT = [["0 - Inici", 0], ["1 - Jackson", 1], ["2 - Barcelona", 2], ["3 - Matriculat", 3]]
 
 
   def self.ids

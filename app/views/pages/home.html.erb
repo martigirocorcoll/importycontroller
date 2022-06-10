@@ -1,6 +1,35 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Importy Controller</h1>
 
-<%= link_to(cl_image_tag("shuqxjxrh1vcxlmsex2p31rsybqs",
-      width: 400, height: 300, crop: :fill),cl_image_path("shuqxjxrh1vcxlmsex2p31rsybqs") ) %>
-hello
+
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>Iniciats</th>
+      <th>Jackson</th>
+      <th>Barcelona</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operacions.each do |operacion| %>
+      <% if operacion.estado == 0 %>
+        <tr>
+          <td><%= operacion.titol %></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% elsif operacion.estado == 1 %>
+        <tr>
+          <td></td>
+          <td><%= operacion.titol %></td>
+          <td></td>
+        </tr>
+      <% elsif operacion.estado == 2 %>
+        <tr>
+          <td></td>
+          <td></td>
+          <td><%= operacion.titol %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
