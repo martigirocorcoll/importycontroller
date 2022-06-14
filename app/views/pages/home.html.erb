@@ -1,35 +1,44 @@
-<h1>Importy Controller</h1>
-
-
-<table class = "table table-hover">
-  <thead>
-    <tr>
-      <th>Iniciats</th>
-      <th>Jackson</th>
-      <th>Barcelona</th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="wrapper-grid">
+  <div class="one-grid">
+  <h2 class="grid-title">0. Venta</h2>
     <% @operacions.each do |operacion| %>
-      <% if operacion.estado == 0 %>
-        <tr>
-          <td><%= operacion.titol %></td>
-          <td></td>
-          <td></td>
-        </tr>
-      <% elsif operacion.estado == 1 %>
-        <tr>
-          <td></td>
-          <td><%= operacion.titol %></td>
-          <td></td>
-        </tr>
-      <% elsif operacion.estado == 2 %>
-        <tr>
-          <td></td>
-          <td></td>
-          <td><%= operacion.titol %></td>
-        </tr>
+      <% if operacion.estado.to_i == 0 %>
+        <div class = "grid-card"><%= link_to " #{operacion.titol} ", operacion, :class => "text-dec-none" %></div>
+      <% end %>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="two-grid">
+    <h2 class="grid-title">1. Jackson</h2>
+    <% @operacions.each do |operacion| %>
+      <% if operacion.estado.to_i == 1 %>
+        <div class = "grid-card"><%= link_to " #{operacion.titol} ", operacion, :class => "text-dec-none" %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="three-grid">
+    <h2 class="grid-title">2. Barcelona</h2>
+    <% @operacions.each do |operacion| %>
+      <% if operacion.estado.to_i == 2 %>
+        <div class = "grid-card"><%= link_to " #{operacion.titol} ", operacion, :class => "text-dec-none" %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="four-grid">
+    <h2 class="grid-title">3. Stock</h2>
+    <% @operacions.each do |operacion| %>
+      <% if operacion.estado.to_i == 3 %>
+        <div class = "grid-card"><%= link_to " #{operacion.titol} ", operacion, :class => "text-dec-none" %></div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="five-grid">
+    <h2 class="grid-title">4. Matriculat</h2>
+    <% @operacions.each do |operacion| %>
+      <% if operacion.estado.to_i == 4 %>
+        <div class = "grid-card"><%= link_to " #{operacion.titol} ", operacion, :class => "text-dec-none" %></div>
+      <% end %>
+    <% end %>
+  </div>
+
+
+</div>
