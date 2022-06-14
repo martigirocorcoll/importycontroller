@@ -4,7 +4,9 @@ class OperacionsController < ApplicationController
   # GET /operacions or /operacions.json
   def index
     @q = Operacion.ransack(params[:q])
+    @q.sorts = "id desc" if @q.sorts.empty?
     @operacions = @q.result(distinct: true)
+
 
     # pagos_test = []
     # Pago.where(fecha_efectiva: nil).order(:fecha_teorica).each do |pago|

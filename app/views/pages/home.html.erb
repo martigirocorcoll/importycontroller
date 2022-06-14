@@ -27,7 +27,7 @@
     <h2 class="grid-title">3. Stock</h2>
     <% @operacions.each do |operacion| %>
       <% if operacion.estado.to_i == 3 %>
-        <div class = "grid-card"><%= link_to " #{operacion.titol} ", operacion, :class => "text-dec-none" %></div>
+        <div class = "grid-card-stock"><%= link_to " #{operacion.titol} ", operacion, :class => "text-dec-none" %></div>
       <% end %>
     <% end %>
   </div>
