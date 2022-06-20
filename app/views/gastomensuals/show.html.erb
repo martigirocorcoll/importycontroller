@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titol:</strong>
+  <%= @gastomensual.titol %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @gastomensual.cantidad %>
+</p>
+
+<p>
+  <strong>Iva:</strong>
+  <%= @gastomensual.iva %>
+</p>
+
+<%= link_to 'Edit', edit_gastomensual_path(@gastomensual) %> |
+<%= link_to 'Back', gastomensuals_path %>

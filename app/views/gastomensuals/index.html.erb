@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<div class = "d-flex justify-content-around align-items-center">
+<h1>Todos los gastos mensuales</h1>
+
+<%= link_to '+ Nuevo gasto mensual', new_gastomensual_path, :class => "btn btn-outline-warning" %>
+</div>
+
+<h2 style= "text-align: center;"> <%= number_to_currency(Gastomensual.basetotal)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h2>
+
+<table class = "table table-hover">
+  <thead>
+    <tr>
+      <th>Titol</th>
+      <th>Cantidad</th>
+      <th>Iva</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gastomensuals.each do |gastomensual| %>
+      <tr>
+        <td><%= link_to "#{gastomensual.titol}", edit_gastomensual_path(gastomensual) %></td>
+        <td><%= gastomensual.cantidad %></td>
+        <td><%= gastomensual.iva %></td>
+        <td><%= link_to 'x', gastomensual, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

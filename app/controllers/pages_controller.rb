@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
     @operacions = Operacion.order(id: :desc)
   end
+
+  def control
+    @operacions = Operacion.order(id: :desc)
+  end
 end
