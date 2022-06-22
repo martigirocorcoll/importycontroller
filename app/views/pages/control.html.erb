@@ -1,0 +1,359 @@
+<table class = "table table-hover">
+<thead>
+    <tr>
+      <th style="width: 8.33%">Gener</th>
+      <th style="width: 8.33%">Febrer</th>
+      <th style="width: 8.33%">Març</th>
+      <th style="width: 8.33%">Abril</th>
+      <th style="width: 8.33%">Maig</th>
+      <th style="width: 8.33%">Juny</th>
+      <th style="width: 8.33%">Juliol</th>
+      <th style="width: 8.33%">Agost</th>
+      <th style="width: 8.33%">Septembre</th>
+      <th style="width: 8.33%">Octubre</th>
+      <th style="width: 8.33%">Novembre</th>
+      <th style="width: 8.33%">Desembre</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_01.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_02.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_03.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_04.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_05.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_06.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_07.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_08.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_09.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_10.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_11.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <%benefici = 0 %>
+      <% @operacions_12.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+  </tr>
+
+  <tr>
+    <%benefici = 0 %>
+    <td>
+      <% @operacions_01.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_02.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_03.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_04.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_05.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_06.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_07.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_08.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_09.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_10.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_11.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+    <td>
+      <% @operacions_12.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €
+    </td>
+  </tr>
+
+    <tr>
+    <%benefici = 0 %>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_01.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_02.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_03.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_04.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_05.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_06.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_07.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_08.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_09.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_10.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_11.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+    <td>
+      <% benefici -= @objetivo_mensual  %>
+      <% @operacions_12.each do |operacio| %>
+        <%benefici += operacio.margen_control %>
+      <% end %>
+      <%= number_to_currency(benefici)[0...-3].gsub(",",":").gsub(".",",").gsub(":",".").gsub("$","")%>€
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <% @operacions_01.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_02.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_03.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_04.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_05.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_06.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_07.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_08.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_09.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_10.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_11.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+    <td>
+      <% @operacions_12.each do |operacio| %>
+        <p>
+        <%= operacio.titol %>
+        </p>
+      <% end %>
+    </td>
+
+  </tr>
+
+  </tbody>
+</table>

@@ -7,6 +7,14 @@ class Operacion < ApplicationRecord
 
   ESTAT = [["0 - Inici", 0], ["1 - Jackson", 1], ["2 - Barcelona", 2], ["3 - Stock venta", 3], ["4 - Matriculat", 4], ["5 - Matriculat, entregat i garantia feta", 5], ["6 - Stock no venta", 6]]
 
+  def margen_control
+    if self.beneficio != nil
+      return self.beneficio
+    else
+      return self.margen_total
+    end
+  end
+
 
   def self.ids
     ids = [""]
