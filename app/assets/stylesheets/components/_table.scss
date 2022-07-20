@@ -24,6 +24,16 @@
   grid-auto-rows: minmax(100px, auto);
 }
 
+.wrapper-grid-bal {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  // grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
 .one-grid {
   grid-column: 1 / 2;
 }
@@ -71,4 +81,22 @@
 .text-dec-none{
   text-decoration: none;
   color: black;
+}
+
+.other{
+   background-color: white;
+   margin: 5px;
+   padding: 5px;
+}
+
+.flexi{
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.flexit {
+  display: flex;
+  justify-content: space-between;
+
 }

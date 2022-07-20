@@ -1,0 +1,16 @@
+
+<%= simple_form_for(@activo) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs form-group">
+    <%= f.input :titular, collection: ["Importy Garage SL", "Àngel i Martí"] %>
+    <%= f.input :tipo, collection: ["Cash", "Per cobrar c/t", "Per cobrar ll/t", "Cotxes Stock", "Actius", "Deute c/t", "Deute ll/t", "Impostos aplaçats", "Polissa"] %>
+    <%= f.input :descripcion %>
+    <%= f.input :cantidad %>
+  </div>
+
+  <div class="form-actions text-center mb-3">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

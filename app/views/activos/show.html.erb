@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titular:</strong>
+  <%= @activo.titular %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @activo.tipo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @activo.descripcion %>
+</p>
+
+<p>
+  <strong>Cantidad:</strong>
+  <%= @activo.cantidad %>
+</p>
+
+<%= link_to 'Edit', edit_activo_path(@activo) %> |
+<%= link_to 'Back', activos_path %>

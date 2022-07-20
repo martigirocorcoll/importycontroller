@@ -1,0 +1,408 @@
+<p id="notice"><%= notice %></p>
+<tr>
+  <h1 style="text-align:center">Patrimoni net total</h1>
+  <h1 style="text-align:center"><%= number_to_currency(Activo.patrimonio)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h1>
+</tr>
+  <div class = "flexi">
+    <h2 style= "text-align:center;"> Importy Garage </h2>
+    <h2 style= "text-align:center;"> Àngel i Martí </h2>
+  </div>
+  <div class = "flexi">
+    <h2><%= number_to_currency(Activo.patrimonio_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h2>
+    <h2><%= number_to_currency(Activo.patrimonio_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h2>
+  </div>
+
+<%# ////////////////////// Importy Garage///////////////////////// %>
+<div class="wrapper-grid-bal">
+  <div class="wrapper-grid-bal other">
+    <div class="one-grid">
+      <div class = flexit>
+        <h2 class="grid-title">Actiu</h2>
+        <h2 class="grid-title"><%= number_to_currency(Activo.activo_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h2>
+      </div>
+
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Cash</h4>
+            <h4><%= number_to_currency(Activo.cash_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Importy Garage SL"  && activo.tipo == "Cash" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Per cobrar c/t</h4>
+           <h4> <%= number_to_currency(Activo.percobrarct_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Importy Garage SL"  && activo.tipo == "Per cobrar c/t" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Cotxes en stock per vendre</h4>
+            <h4><%= number_to_currency(Activo.cotxestock_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Importy Garage SL"  && activo.tipo == "Cotxes Stock" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Per cobrar ll/t</h4>
+            <h4><%= number_to_currency(Activo.percobrarllt_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Importy Garage SL"  && activo.tipo == "Per cobrar ll/t" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Actius</h4>
+            <h4><%= number_to_currency(Activo.actius_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Importy Garage SL"  && activo.tipo == "Actius" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="two-grid">
+      <div class = flexit>
+        <h2 class="grid-title">Passiu</h2>
+        <h2 class="grid-title"><%= number_to_currency(Activo.pasivo_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h2>
+      </div>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Deute c/t</h4>
+            <h4><%= number_to_currency(Activo.deutect_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Importy Garage SL"  && activo.tipo == "Deute c/t" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Deute ll/t</h4>
+            <h4><%= number_to_currency(Activo.deutellt_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Importy Garage SL"  && activo.tipo == "Deute ll/t" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Impostos aplaçats</h4>
+            <h4><%= number_to_currency(Activo.impostos_importy)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Importy Garage SL"  && activo.tipo == "Impostos aplaçats" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<%# ////////////////////// Marti i Angel///////////////////////// %>
+  <div class="wrapper-grid-bal other">
+    <div class="one-grid">
+      <div class = flexit>
+        <h2 class="grid-title">Actiu</h2>
+        <h2 class="grid-title"><%= number_to_currency(Activo.activo_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h2>
+      </div>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Cash</h4>
+            <h4><%= number_to_currency(Activo.cash_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Àngel i Martí"  && activo.tipo == "Cash" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Per cobrar c/t</h4>
+            <h4> <%= number_to_currency(Activo.percobrarct_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Àngel i Martí"  && activo.tipo == "Per cobrar c/t" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+          <div class = flexit>
+            <h4>Cotxes en stock per vendre</h4>
+            <h4><%= number_to_currency(Activo.cotxestock_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Àngel i Martí"  && activo.tipo == "Cotxes Stock" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Per cobrar ll/t</h4>
+            <h4><%= number_to_currency(Activo.percobrarllt_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Àngel i Martí"  && activo.tipo == "Per cobrar ll/t" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Actius</h4>
+            <h4><%= number_to_currency(Activo.actius_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Àngel i Martí"  && activo.tipo == "Actius" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="two-grid">
+      <div class = flexit>
+        <h2 class="grid-title">Passiu</h2>
+        <h2 class="grid-title"><%= number_to_currency(Activo.pasivo_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h2>
+      </div>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Deute c/t</h4>
+            <h4><%= number_to_currency(Activo.deutect_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Àngel i Martí"  && activo.tipo == "Deute c/t" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+        <thead>
+        <tr>
+          <div class = flexit>
+            <h4>Deute ll/t</h4>
+            <h4><%= number_to_currency(Activo.deutellt_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </tr>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Àngel i Martí"  && activo.tipo == "Deute ll/t" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+      <table class = "table table-hover">
+          <div class = flexit>
+            <h4>Impostos aplaçats</h4>
+            <h4><%= number_to_currency(Activo.impostos_marti)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h4>
+          </div>
+        </thead>
+        <tbody>
+          <% @activos.each do |activo| %>
+            <% if activo.titular == "Àngel i Martí"  && activo.tipo == "Impostos aplaçats" %>
+              <tr>
+                <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to "#{activo.descripcion}", activo %></td>
+                <td><%= activo.cantidad %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+  <tr>
+    <h2 style="text-align:center">Patrimoni net total + disponible</h2>
+    <h2 style="text-align:center"><%= number_to_currency(Activo.patrimonio + Activo.polissa_total)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h2>
+  </tr>
+<br>
+<br>
+<table class = "table table-hover">
+  <thead>
+  <tr>
+    <h2 style="text-align:center">Polissa de crèdit</h2>
+    <h2 style="text-align:center"><%= number_to_currency(Activo.polissa_total)[1..].gsub(",",":").gsub(".",",").gsub(":",".")%> €</h2>
+  </tr>
+  </thead>
+  <tbody>
+    <% @activos.each do |activo| %>
+      <% if activo.tipo == "Polissa" %>
+        <tr>
+          <td><%= link_to "#{activo.descripcion}", activo %></td>
+          <td><%= activo.cantidad %></td>
+          <td><%= activo.titular %></td>
+          <td><%= link_to 'x', activo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
